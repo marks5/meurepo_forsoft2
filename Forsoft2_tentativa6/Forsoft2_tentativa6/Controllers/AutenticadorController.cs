@@ -15,7 +15,8 @@ namespace ASPNET.MVC.Controllers
         [HttpPost]
         public ActionResult enviaAoPHP(string usuario, string senha)
         {
-            return Content("<form action='minhaUrlPhp.php' id='frmTest' method='post'><input type='hidden' name='usuario' value='" + usuario + "' /><input type='hidden' name='senha' value='" + senha + "' /></form><script>document.getElementById('frmTest').submit();</script>");
+            //Mudar a action para o php e o método de envio de dados
+            return Content("<form action='http://www.google.com.br' id='frmTest' method='get'><input type='hidden' name='usuario' value='" + usuario + "' /><input type='hidden' name='senha' value='" + senha + "' /></form><script>document.getElementById('frmTest').submit();</script>");
         }
 
         [HttpPost]
