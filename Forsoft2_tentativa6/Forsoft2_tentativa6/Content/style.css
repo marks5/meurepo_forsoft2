@@ -1,0 +1,371 @@
+/*ESTE É UM FODENDO ESTILO EM CSS, NÃO MEXA AQUI, CASO TENHA AMOR A SUA VIDA, OBRIGADO(A) A GERENCIA DESTE FODENDO*/
+
+/* PALETA DE CORES https://coolors.co/c0d789-2274a5-fadf63-e6af2e-333333*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-image: url(../imagens/pexels-photo-104675.jpeg);
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+}
+
+#login {
+  margin: -10px;
+  box-shadow: 3px;
+	max-width: 40%;
+	border-radius: 5px;
+  position: absolute;
+}
+
+#login-box {
+	box-shadow: 3px;
+	width: 80%;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+
+/* Página de Informações de Evento */
+#center {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1.3%;
+}
+
+.evento-box {
+	box-shadow: 3px;
+	width: 100%;
+	margin: 0 auto;
+	border-radius: 5px;
+	clear: both;
+	margin-top: 1.3%;
+}
+
+.evento-box-label {
+	text-align: center;
+	font: 20px/45px sans-serif;
+	color: white;
+	text-shadow: 1px 0px 1px white;
+}
+
+.evento-box-interno {
+	margin-left: 2%;
+	margin-right: 2%;
+	min-height: 10%;
+	background-color: rgba(51,51,51,.4);
+	margin-top: 10px;
+	border-radius: 8px;
+	overflow: hidden;
+	padding: 2%;
+}
+
+.info-evento {
+	text-align: left;
+	font-size: 16px;
+}
+
+.botao {
+	
+}
+/* Fim de página de Informações de Evento */
+
+.login-box-interno {
+	width: 80%;
+	min-height: 10%;
+	background-color: rgba(51,51,51,.4);
+	margin-top: 10px;
+	border-radius: 8px;
+	overflow: hidden;
+	padding: 2%;
+	float: left;
+}
+
+#login-box-label {
+	text-align: center;
+	font: 20px/45px sans-serif;
+	color: white;
+	text-shadow: 1px 0px 1px white;
+}
+
+.input-div input {
+  margin: 20px;
+  background-color: #f2f5f7;
+	border-radius: 15px;
+  display: inline-block;
+  margin-bottom: 8px;
+	width: 250px;
+	height: 40px;
+	padding-left: 5px;
+	font: normal 13px sans-serif;
+	border: 3px solid white;
+	outline: none;
+}
+
+.input-div:hover input{
+	border-color: #7dc6dd;
+}
+
+#input-senha {
+	margin-top: 0px;
+}
+
+.btn_login {
+  font:bold 20px Tahoma, Geneva, sans-serif;
+  font-style:normal;
+  color:#ffffff;
+  background:#2274A5;
+  border:0px solid #ffffff;
+  text-shadow:0px -1px 1px #222222;
+  box-shadow:2px 2px 5px #000000;
+  -moz-box-shadow:2px 2px 5px #000000;
+  -webkit-box-shadow:2px 2px 5px #000000;
+  border-radius:10px 10px 10px 10px;
+  -moz-border-radius:10px 10px 10px 10px;
+  -webkit-border-radius:10px 10px 10px 10px;
+  padding: 8px 45px;
+  cursor:pointer;
+  margin:0 auto;
+  width: 250px;
+  margin-top: 0.5%;
+}
+
+.btn_login:active{
+  cursor:pointer;
+  position:relative;
+  top:2px;
+}
+
+.btn_login:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99), color-stop(1, #599bb3));
+	background:-moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background:-webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background:-o-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background:-ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3',GradientType=0);
+	background-color:#408c99;
+}
+
+#btn-box {
+   margin-left: 33%;
+   margin-top: 10px;
+}
+
+#msg_erro {
+    font-size-adjust: auto;
+    font-style: italic;
+    font-weight: 900;
+    color: white;
+    visibility: hidden;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.login-form {
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    margin-top: 5%;
+}
+
+#recover {
+    color: white;
+}
+
+@media screen and (max-width: 400px) {
+    #login-box-label {
+      height: 40px;
+      font: 12px/30px sans-serif;
+    }
+}
+
+#div-geral {
+    display: inline-block;
+	padding: 4%;
+}
+
+#pao {
+    background-color: rgba(51,51,51,.4);
+    float: right;
+    max-width: 60%;
+    position: relative;
+    border-radius: 10px;
+    text-align: center;
+    font: 20px/45px sans-serif;
+    color: white;
+    text-shadow: 1px 0px 1px white;
+    padding: 3% 0 3% 0;
+}
+
+#goibada {
+    height: 100%;
+    width: 100%;
+}
+
+.control-group input {
+  margin: 20px;
+	background-color: #f2f5f7;
+	border-radius: 15px;
+  display: inline-block;
+  margin-bottom: 8px;
+	width: 250px;
+	height: 40px;
+	padding-left: 5px;
+	font: normal 13px sans-serif;
+	border: 3px solid white;
+	outline: none;
+}
+
+.control-group select {
+  margin: 20px;
+	background-color: #f2f5f7;
+	border-radius: 15px;
+  display: inline-block;
+  margin-bottom: 8px;
+	width: 250px;
+	height: 40px;
+	padding-left: 5px;
+	font: normal 13px sans-serif;
+	border: 3px solid white;
+	outline: none;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    background-color: white;
+    margin:auto;
+}
+
+td, th {
+    border: 1px solid #7dc6dd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.foto {
+  background-image: url("../imagens/perfil.jpg");
+  background-size: 100%;
+  height: 100px;
+  width: 100px;
+  margin: 3% auto;
+}
+
+.foto2 {
+  background-image: url("../imagens/download.jpg");
+  background-size: 100%;
+  height: 100px;
+  width: 100px;
+  margin: 3% auto;
+} 
+
+.info {
+  color: white;
+  font-size: 24px;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.info > div > a {
+  color: lightblue;
+}
+
+.info > div {
+  margin-top: 3%;
+}
+
+fieldset {
+  text-align: center;
+}
+
+/*NAVBAR*/
+
+#nave{
+    width: 100%;
+    font-size: 23px;
+    color: black;
+    font-weight: 900;
+    height: 60px;
+	margin-bottom: 0.5%;
+}
+
+#logo-nav {
+    color: white;
+    float: left;
+    height: 100%;
+}
+
+#logo-nav > img {
+  width: 150px;
+/*  margin: 7px;*/
+}
+
+#texto-nav {
+    width: auto;
+    height: 60px;
+    background-color: aqua;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding-right: 10%;
+    overflow: hidden;
+    background-color: #333;
+    line-height: 40px;
+}
+
+li {
+    float: right;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #2274A5;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*FIM NAVBAR*/
