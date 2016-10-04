@@ -10,6 +10,6 @@ namespace Teste3.Models
         public int idEquipe { get; set; }
         public string Nome { get; set; }
         public Modalidade Modalidade { get; set; }
-        public IEnumerable<Atleta> Atletas { get; set; }
+        public List<Atleta> Atletas { get; set; }
     }
 }

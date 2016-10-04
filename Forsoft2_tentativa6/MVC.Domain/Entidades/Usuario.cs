@@ -12,6 +12,6 @@ namespace Teste3.Models
         public string Email { get; set; }
         public string Senha { get; set; }
         public int Permissao { get; set; }
-        public IEnumerable<Evento> Eventos { get; set; }
+        public List<Evento> Eventos { get; set; }
     }
 }
