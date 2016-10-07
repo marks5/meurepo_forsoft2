@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ConsoleApplication1
 {
-    public class Usuario
+    public class UsuarioDOM
     {
         public int idUsuario { get; set; }
         public string Nome { get; set; }

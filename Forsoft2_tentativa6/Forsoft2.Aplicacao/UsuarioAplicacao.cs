@@ -1,13 +1,15 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using Forsoft2.Repositório;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Forsoft2.Dominio;
 
-namespace ConsoleApplication1
+namespace Forsoft2.Aplicacao
 {
-    class UsuarioAplicacao
+    public class UsuarioAplicacao
     {
         private Contexto contexto;
 

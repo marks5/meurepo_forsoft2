@@ -123,9 +123,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MVC.Domain\MVC.Domain.csproj">
+    <ProjectReference Include="..\MVC.Domain\Forsoft2.Dominio.csproj">
       <Project>{5977ed1a-1cde-4254-a728-80e1f2767e6d}</Project>
-      <Name>MVC.Domain</Name>
+      <Name>Forsoft2.Dominio</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

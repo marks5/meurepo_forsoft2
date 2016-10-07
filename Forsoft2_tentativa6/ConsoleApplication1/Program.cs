@@ -1,9 +1,11 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Forsoft2.Dominio;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Forsoft2.Aplicacao;
 
 namespace ConsoleApplication1
 {

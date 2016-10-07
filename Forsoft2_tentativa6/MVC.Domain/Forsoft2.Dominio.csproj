@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2DCF2E5E-5BFB-4103-80C9-5237E2ADAE10}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{5977ED1A-1CDE-4254-A728-80E1F2767E6D}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleApplication1</RootNamespace>
-    <AssemblyName>ConsoleApplication1</AssemblyName>
+    <RootNamespace>MVC.Domain</RootNamespace>
+    <AssemblyName>MVC.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Web, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -45,22 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Entidades\Atleta.cs" />
+    <Compile Include="Entidades\Equipe.cs" />
+    <Compile Include="Entidades\Evento.cs" />
+    <Compile Include="Entidades\Local.cs" />
+    <Compile Include="Entidades\Modalidade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuarioDOM.cs" />
+    <Compile Include="Entidades\Recurso.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Forsoft2.Aplicacao\Forsoft2.Aplicacao.csproj">
-      <Project>{ca8b2930-4036-47b1-91df-811313b1c62f}</Project>
-      <Name>Forsoft2.Aplicacao</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MVC.Domain\Forsoft2.Dominio.csproj">
-      <Project>{5977ED1A-1CDE-4254-A728-80E1F2767E6D}</Project>
-      <Name>Forsoft2.Dominio</Name>
-    </ProjectReference>
+    <Folder Include="Aplicação\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

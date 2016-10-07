@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace Forsoft2.Repositório
 {
-    class Contexto : IDisposable
+    public class Contexto:IDisposable
     {
         private readonly MySqlConnection minhaConexao;
 
         public Contexto()
         {
-            minhaConexao = 
+            minhaConexao =
                 new MySqlConnection(ConfigurationManager.ConnectionStrings["Teste"].ConnectionString
                 );
             minhaConexao.Open();
@@ -45,4 +45,5 @@ namespace ConsoleApplication1
                 minhaConexao.Close();
         }
     }
+
 }
