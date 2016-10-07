@@ -9,7 +9,7 @@ namespace Forsoft2.Dominio
     {
         public int idRecurso { get; set; }
         public string Nome { get; set; }
-        public bool Disponibilidade { get; set; }
-        public string Descrição { get; set; }
+        public int Disponibilidade { get; set; }
+        public string Descricao { get; set; }
     }
 }
