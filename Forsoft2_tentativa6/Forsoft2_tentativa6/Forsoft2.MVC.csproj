@@ -102,6 +102,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AutenticadorController.cs" />
+    <Compile Include="Controllers\RecursoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -121,8 +123,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Recurso\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Forsoft2.Aplicacao\Forsoft2.Aplicacao.csproj">
+      <Project>{ca8b2930-4036-47b1-91df-811313b1c62f}</Project>
+      <Name>Forsoft2.Aplicacao</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MVC.Domain\Forsoft2.Dominio.csproj">
       <Project>{5977ed1a-1cde-4254-a728-80e1f2767e6d}</Project>
       <Name>Forsoft2.Dominio</Name>
