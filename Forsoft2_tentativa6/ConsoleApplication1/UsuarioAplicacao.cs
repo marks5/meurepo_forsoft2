@@ -1,0 +1,90 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class UsuarioAplicacao
+    {
+        private Contexto contexto;
+
+        private void Inserir(Usuario usuario)
+        {
+            var strQuery = "";
+            strQuery += " INSERT INTO USUARIOS (email, senha, permissao) ";
+            strQuery += string.Format(" VALUES ('{0}','{1}','{2}')",usuario.Email
+                ,usuario.Senha,usuario.Permissao);
+
+            using (contexto = new Contexto())
+            {
+                contexto.ExecutaComando(strQuery);
+            }
+
+        }
+
+        private void Alterar(Usuario usuario)
+        {
+            var strQuery = "";
+            strQuery += " UPDATE USUARIOS SET";
+            strQuery += string.Format(" email = '{0}',", usuario.Email);
+            strQuery += string.Format(" senha = '{0}',", usuario.Senha);
+            strQuery += string.Format(" permissao = '{0}' ", usuario.Permissao);
+            strQuery += string.Format(" WHERE idUsuario = '{0}'", usuario.idUsuario);
+
+            using (contexto = new Contexto())
+            {
+                contexto.ExecutaComando(strQuery);
+            }
+        }
+
+        public void Salvar(Usuario usuario)
+        {
+            if (usuario.idUsuario > 0)
+                Alterar(usuario);
+             else
+                Inserir(usuario);
+            
+        }
+
+        public void Excluir(int id)
+        {
+            using(contexto = new Contexto())
+            {
+                var strQuery = string.Format(" DELETE FROM USUARIOS WHERE idUsuario = {0}", id);
+                contexto.ExecutaComando(strQuery);
+            }
+        }
+
+        public List<Usuario> ListarTodos()
+        {
+            using (contexto = new Contexto())
+            {
+                var strQuery = "SELECT * FROM USUARIOS";
+                var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
+                return TransformaReaderEmListadeObjeto(retornoDataReader);
+            }
+        }
+
+        private List<Usuario> TransformaReaderEmListadeObjeto(MySqlDataReader reader)
+        {
+            var usuarios = new List<Usuario>();
+            while (reader.Read())
+            {
+                var temObjeto = new Usuario()
+                {
+                    idUsuario = int.Parse(reader["idUsuario"].ToString()),
+                    Email = reader["email"].ToString(),
+                    Senha = reader["senha"].ToString(),
+                    Permissao = Convert.ToInt32(reader["permissao"].ToString())
+                };
+                usuarios.Add(temObjeto);
+            }
+
+            reader.Close();
+            return usuarios;
+        }
+    }
+}
