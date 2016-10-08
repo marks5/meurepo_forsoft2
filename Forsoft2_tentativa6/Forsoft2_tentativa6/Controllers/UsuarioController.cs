@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Forsoft2.Aplicacao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,9 @@ namespace Forsoft2_tentativa6.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var appUsuario = new UsuarioAplicacao().ListarTodos();
+
+            return View(appUsuario);
         }
     }
 }

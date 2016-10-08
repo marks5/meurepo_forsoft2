@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+    <meta charset="UTF-8" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <script src="~/Script/script.js"></script>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> -->
+    <title>Cadastro</title>
+</head>
+<body>
+    <nav id="nave">
+        <ul>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Listas</a>
+                <div class="dropdown-content">
+                    <a href="#">Atletas</a>
+                    <a href="#">Equipe</a>
+                    <a href="#">Evento</a>
+                    <a href="#">Local</a>
+                    <a href="#">Recurso</a>
+                </div>
+            </li>
+            <li><a href="#news">Perfil</a></li>
+            <li><a class="active" href="#home">Home</a></li>
+            <li id="logo-nav"> <img src="http://i.imgur.com/vqRrYH2.png"></img> </li>
+        </ul>
+    </nav>
+    <form id="login-box" name="formulario" onsubmit="return validaInfo()">
+        <div id="goibada" class="login-box-interno">
+            <div id="login-box-label">
+                <h1> Novos Usuários </h1>
+            </div>
+            <div class="login-form">
+                <button type="submit" class="btn_login">Cadastrar Novos Usuarios</button>
+                @RenderBody()
+            </div>
+        </div>
+    </form>
+</body>
+</html>

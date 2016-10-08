@@ -80,7 +80,7 @@ html {
 	background-color: rgba(51,51,51,.4);
 	margin-top: 10px;
 	border-radius: 8px;
-	overflow: hidden;
+	overflow: scroll;
 	padding: 2%;
 	float: left;
 }

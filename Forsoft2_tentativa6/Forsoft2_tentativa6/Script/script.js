@@ -1,3 +1,4 @@
+/// <reference path="script.js" />
 function validaInfo() { 
     if (document.formulario.usuario.value == "") {
        document.formulario.usuario.focus();

@@ -46,10 +46,10 @@ namespace Forsoft2.Aplicacao
 
         public void Salvar(Recurso recurso)
         {
-            if (usuario.idUsuario > 0)
-                Alterar(usuario);
+            if (recurso.idRecurso > 0)
+                Alterar(recurso);
             else
-                Inserir(usuario);
+                Inserir(recurso);
 
         }
 
