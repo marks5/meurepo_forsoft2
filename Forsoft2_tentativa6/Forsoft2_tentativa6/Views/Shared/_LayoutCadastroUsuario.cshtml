@@ -15,12 +15,20 @@
             <li class="dropdown">
                 <a href="#" class="dropbtn">Listas</a>
                 <div class="dropdown-content">
-                    <a href="#">Atletas</a>
-                    <a href="#">Equipe</a>
-                    <a href="#">Evento</a>
-                    <a href="#">Local</a>
-                    <a href="#">Recurso</a>
-                    @Html.ActionLink("Recurso","Index","Recurso")
+                    @*<a href="#">Atletas</a>
+            <a href="#">Equipe</a>
+            <a href="#">Evento</a>
+            <a href="#">Local</a>
+            <a href="#">Recurso</a>*@
+                    @Html.ActionLink("Atletas", "Atletas", "Lista")
+
+                    @Html.ActionLink("Equipes", "Equipes", "Lista")
+
+                    @Html.ActionLink("Eventos", "Eventos", "Lista")
+
+                    @Html.ActionLink("Locais", "Locais", "Lista")
+
+                    @Html.ActionLink("Recursos", "Recursos", "Lista")
                 </div>
             </li>
             <li><a href="#news">Perfil</a></li>
@@ -28,38 +36,15 @@
             <li id="logo-nav"> <img src="http://i.imgur.com/vqRrYH2.png"></img> </li>
         </ul>
     </nav>
-    <form id="login-box" name="formulario" onsubmit="return validaInfo()">
+    <span id="login-box" name="formulario" onsubmit="return validaInfo()">
         <div id="goibada" class="login-box-interno">
             <div id="login-box-label">
                 <h1> Novo Usuário </h1>
             </div>
             <div class="login-form">
                 @RenderBody()
-                <fieldset>
-                    <legend>Outros Dados:</legend>
-                    <div class="control-group">
-                        <div>
-                            <label for="input-usuario">Equipe</label>
-                            <select>
-                                <option value="volvo">Futebol</option>
-                                <option value="saab">Atletismo</option>
-                                <option value="opel">Natação</option>
-                                <option value="audi">Volei</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="input-usuario">Cargo</label>
-                            <select>
-                                <option value="volvo">Futebol</option>
-                                <option value="saab">Atletismo</option>
-                                <option value="opel">Natação</option>
-                                <option value="audi">Volei</option>
-                            </select>
-                        </div>
-                </fieldset>
-                <button type="submit" class="btn_login">Cadastrar</button>
             </div>
         </div>
-    </form>
+    </span>
 </body>
 </html>

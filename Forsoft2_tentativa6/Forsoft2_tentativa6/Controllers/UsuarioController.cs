@@ -22,16 +22,22 @@ namespace Forsoft2_tentativa6.Controllers
             return View();
         }
 
-
-        //[ValidateAntiForgeryToken]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(Usuario usuario)
         {
+            try { 
+            //checa se o modelo da view é válido
             if (ModelState.IsValid)
             {
                 var appUsuario = new UsuarioAplicacao();
                     appUsuario.Salvar(usuario);
                 return RedirectToAction("Index");
+            }
+            } catch (Exception e) {
+                Console.Write("E-mail já cadastrado");
+                ViewBag.Email = "Email já cadastrado";
+                return View(usuario);
             }
             return View(usuario);
         }
@@ -45,10 +51,9 @@ namespace Forsoft2_tentativa6.Controllers
 
             return View(usuario);
         }
-
-
-        //[ValidateAntiForgeryToken]
+        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Editar(Usuario usuario)
         {
             if (ModelState.IsValid)
@@ -69,10 +74,9 @@ namespace Forsoft2_tentativa6.Controllers
 
             return View(usuario);
         }
-
-
-        //[ValidateAntiForgeryToken]
+        
         [HttpPost, ActionName("Excluir")]
+        [ValidateAntiForgeryToken]
         public ActionResult ExcluirConfirmado(int id)
         {
             var appUsuario = new UsuarioAplicacao();

@@ -16,8 +16,8 @@ namespace Forsoft2.Aplicacao
         private void Inserir(Usuario usuario)
         {
             var strQuery = "";
-            strQuery += " INSERT INTO USUARIOS (email, senha, permissao) ";
-            strQuery += string.Format(" VALUES ('{0}','{1}','{2}')",usuario.Email
+            strQuery += " INSERT INTO USUARIOS (nome, email, senha, permissao) ";
+            strQuery += string.Format(" VALUES ('{0}','{1}','{2}',{3})",usuario.Nome,usuario.Email
                 ,usuario.Senha,usuario.Permissao);
 
             using (contexto = new Contexto())

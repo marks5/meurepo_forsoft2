@@ -15,11 +15,20 @@
             <li class="dropdown">
                 <a href="#" class="dropbtn">Listas</a>
                 <div class="dropdown-content">
-                    <a href="#">Atletas</a>
+                    @*<a href="#">Atletas</a>
                     <a href="#">Equipe</a>
                     <a href="#">Evento</a>
                     <a href="#">Local</a>
-                    <a href="#">Recurso</a>
+                    <a href="#">Recurso</a>*@
+                    @Html.ActionLink("Atletas", "Atletas", "Lista")
+                    
+                    @Html.ActionLink("Equipes", "Equipes", "Lista")
+                    
+                    @Html.ActionLink("Eventos", "Eventos", "Lista")
+                    
+                    @Html.ActionLink("Locais", "Locais", "Lista")
+                    
+                    @Html.ActionLink("Recursos", "Recursos", "Lista")
                 </div>
             </li>
             <li><a href="#news">Perfil</a></li>

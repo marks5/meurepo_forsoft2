@@ -15,9 +15,12 @@
     <div class="form-horizontal">
         <h4>Usuario</h4>
         <hr />
-        @Html.ValidationSummary(false)
+        @Html.ValidationSummary(true)
+        @ViewBag.Email
         <div class="form-group">
-            @Html.HiddenFor(model => model.idUsuario)
+            @Html.LabelFor(model => model.idUsuario)
+            @Html.EditorFor(model => model.idUsuario,"", new { @AttributeValue = new { value = "0" } })
+            @Html.ValidationMessageFor(model => model.idUsuario)
             
         </div>
 
