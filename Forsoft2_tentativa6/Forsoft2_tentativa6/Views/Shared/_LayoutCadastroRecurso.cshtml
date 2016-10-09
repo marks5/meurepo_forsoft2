@@ -1,13 +1,11 @@
 ﻿<html>
 <head>
     <meta charset="UTF-8" />
-    <link href="~/Content/style.css" rel="stylesheet" />
-    <script src="~/Script/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> -->
-    <title>Cadastro</title>
+    <title>Cadastro Recursos</title>
 </head>
 <body>
     <nav id="nave">
@@ -30,11 +28,20 @@
     <form id="login-box" name="formulario" onsubmit="return validaInfo()">
         <div id="goibada" class="login-box-interno">
             <div id="login-box-label">
-                <h1> Novos Usuários </h1>
+                <h1> Recursos </h1>
             </div>
             <div class="login-form">
-                <!--<button type="submit" class="btn_login">Cadastrar Novos Usuarios</button>-->
-                @RenderBody()
+                <fieldset>
+                    <legend>Dados do endereço:</legend>
+                    <div class="control-group">
+                        @RenderBody()
+                        <div>
+                            <label for="input-usuario">Local:</label>
+                            <input name="Local" type="text" placeholder="Local" class="login-field" id="input-usuario" />
+                        </div>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn_login">Cadastrar</button>
             </div>
         </div>
     </form>

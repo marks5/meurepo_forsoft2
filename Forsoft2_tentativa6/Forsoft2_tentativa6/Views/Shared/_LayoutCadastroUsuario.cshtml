@@ -20,6 +20,7 @@
                     <a href="#">Evento</a>
                     <a href="#">Local</a>
                     <a href="#">Recurso</a>
+                    @Html.ActionLink("Recurso","Index","Recurso")
                 </div>
             </li>
             <li><a href="#news">Perfil</a></li>
@@ -30,11 +31,33 @@
     <form id="login-box" name="formulario" onsubmit="return validaInfo()">
         <div id="goibada" class="login-box-interno">
             <div id="login-box-label">
-                <h1> Novos Usuários </h1>
+                <h1> Novo Usuário </h1>
             </div>
             <div class="login-form">
-                <!--<button type="submit" class="btn_login">Cadastrar Novos Usuarios</button>-->
                 @RenderBody()
+                <fieldset>
+                    <legend>Outros Dados:</legend>
+                    <div class="control-group">
+                        <div>
+                            <label for="input-usuario">Equipe</label>
+                            <select>
+                                <option value="volvo">Futebol</option>
+                                <option value="saab">Atletismo</option>
+                                <option value="opel">Natação</option>
+                                <option value="audi">Volei</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="input-usuario">Cargo</label>
+                            <select>
+                                <option value="volvo">Futebol</option>
+                                <option value="saab">Atletismo</option>
+                                <option value="opel">Natação</option>
+                                <option value="audi">Volei</option>
+                            </select>
+                        </div>
+                </fieldset>
+                <button type="submit" class="btn_login">Cadastrar</button>
             </div>
         </div>
     </form>

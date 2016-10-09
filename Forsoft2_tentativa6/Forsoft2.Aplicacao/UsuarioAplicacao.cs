@@ -70,6 +70,16 @@ namespace Forsoft2.Aplicacao
             }
         }
 
+        public Usuario ListarPorID(int id)
+        {
+            using (contexto = new Contexto())
+            {
+                var strQuery = string.Format("SELECT * FROM USUARIOS WHERE idUsuario = {0}",id);
+                var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
+                return TransformaReaderEmListadeObjeto(retornoDataReader).FirstOrDefault();
+            }
+        }
+
         private List<Usuario> TransformaReaderEmListadeObjeto(MySqlDataReader reader)
         {
             var usuarios = new List<Usuario>();
@@ -78,15 +88,45 @@ namespace Forsoft2.Aplicacao
                 var temObjeto = new Usuario()
                 {
                     idUsuario = int.Parse(reader["idUsuario"].ToString()),
+                    Nome = reader["nome"].ToString(),
                     Email = reader["email"].ToString(),
                     Senha = reader["senha"].ToString(),
-                    Permissao = Convert.ToInt32(reader["permissao"].ToString())
+                    Permissao = Convert.ToInt32(reader["permissao"].ToString()),
+                    //Eventos = ListarTodosEventosPorUsuario(int.Parse(reader["idUsuario"].ToString()))
+
                 };
                 usuarios.Add(temObjeto);
             }
 
             reader.Close();
             return usuarios;
+        }
+
+        private List<Evento> ListarTodosEventosPorUsuario(int id)
+        {
+            using (contexto = new Contexto())
+            {
+                var strQuery = string.Format("SELECT * FROM USUARIOEVENTO WHERE idUsuario = {0}",id);
+                var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
+                return TransformaReaderEmListadeObjetoEV(retornoDataReader);
+            }
+        }
+
+        private List<Evento> TransformaReaderEmListadeObjetoEV(MySqlDataReader reader)
+        {
+            var eventos = new List<Evento>();
+            while (reader.Read())
+            {
+                var temObjeto = new Evento()
+                {
+                    idEvento = int.Parse(reader["idEvento"].ToString()),
+                    Nome = reader["nome"].ToString(),
+                };
+                eventos.Add(temObjeto);
+            }
+
+            reader.Close();
+            return eventos;
         }
     }
 }

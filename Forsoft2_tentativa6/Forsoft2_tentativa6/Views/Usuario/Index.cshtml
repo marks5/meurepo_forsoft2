@@ -5,10 +5,8 @@
     Layout = "~/Views/Shared/_LayoutListaUsuario.cshtml";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Cadastrar Novos Usuários", "Cadastrar",null, new {@class = "btn_login" })
 </p>
 <table class="table">
     <tr>
@@ -51,12 +49,19 @@
             @Html.DisplayFor(modelItem => item.Permissao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Eventos)
+            
+            @*@{ 
+                foreach (var item2 in item.Eventos)
+                {
+                    @Html.DisplayFor(ModelEvento => item2.Nome)
+                }
+
+            }*@
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Editar", "Editar", new { id=item.idUsuario}) |
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.idUsuario })
         </td>
     </tr>
 }

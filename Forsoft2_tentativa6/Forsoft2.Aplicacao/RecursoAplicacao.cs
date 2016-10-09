@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace Forsoft2.Aplicacao
 {
-    class RecursoAplicacao
+    public class RecursoAplicacao
     {
         private Contexto contexto;
 
@@ -82,7 +82,7 @@ namespace Forsoft2.Aplicacao
                 {
                     idRecurso = int.Parse(reader["idRecurso"].ToString()),
                     Nome = reader["nome"].ToString(),
-                    Disponibilidade = Convert.ToInt32(reader["disponibilidade"].ToString()),
+                    Disponibilidade = Convert.ToBoolean(Convert.ToInt32(reader["disponibilidade"].ToString())),
                     Descricao = reader["descricao"].ToString()
                 };
                 recursos.Add(temObjeto);

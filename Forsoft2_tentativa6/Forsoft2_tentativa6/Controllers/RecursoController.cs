@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Forsoft2.Aplicacao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace Forsoft2_tentativa6.Controllers
         // GET: Recurso
         public ActionResult Index()
         {
-            return View();
+            var appRecurso = new RecursoAplicacao().ListarTodos();
+            return View(appRecurso);
         }
     }
 }

@@ -138,6 +138,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutListaUsuario.cshtml" />
+    <Content Include="Views\Shared\_LayoutListaRecurso.cshtml" />
+    <Content Include="Views\Recurso\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutCadastroUsuario.cshtml" />
+    <Content Include="Views\Shared\_LayoutCadastroRecurso.cshtml" />
+    <Content Include="Views\Usuario\Cadastrar.cshtml" />
+    <Content Include="Views\Usuario\Editar.cshtml" />
+    <Content Include="Views\Usuario\Excluir.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -147,8 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\Recurso\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Forsoft2.Aplicacao\Forsoft2.Aplicacao.csproj">
