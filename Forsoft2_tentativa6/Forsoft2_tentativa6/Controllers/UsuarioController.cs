@@ -19,7 +19,7 @@ namespace Forsoft2_tentativa6.Controllers
 
         public ActionResult Cadastrar()
         {
-            return View();
+            return View(new Usuario { idUsuario = 0 });
         }
 
         [HttpPost]

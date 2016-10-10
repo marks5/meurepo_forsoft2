@@ -17,12 +17,12 @@
         <hr />
         @Html.ValidationSummary(true)
         @ViewBag.Email
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.idUsuario)
             @Html.EditorFor(model => model.idUsuario,"", new { @AttributeValue = new { value = "0" } })
             @Html.ValidationMessageFor(model => model.idUsuario)
             
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
