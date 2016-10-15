@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Forsoft2.MVC
+namespace Forsoft2_tentativa6
 {
     public class RouteConfig
     {
@@ -16,7 +16,7 @@ namespace Forsoft2.MVC
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "values", action = "Get", id = UrlParameter.Optional }
+                defaults: new { controller = "Usuario", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

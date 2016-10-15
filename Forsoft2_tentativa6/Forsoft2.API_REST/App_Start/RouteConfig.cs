@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Forsoft2.MVC
+namespace Forsoft2.API_REST
 {
     public class RouteConfig
     {

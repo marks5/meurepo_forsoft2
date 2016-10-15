@@ -2,68 +2,174 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutListaUsuario.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageUsuario.cshtml";
 }
 
-<p>
-    @Html.ActionLink("Cadastrar Novos Usuários", "Cadastrar",null, new { @class = "btn_login" })
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idUsuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Senha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Permissao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Eventos)
-        </th>
-        <th></th>
-    </tr>
+<script>
+    $(function () {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idUsuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Senha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Permissao)
-        </td>
-        <td>
-            
-            @*@{ 
-                foreach (var item2 in item.Eventos)
-                {
-                    @Html.DisplayFor(ModelEvento => item2.Nome)
-                }
+        $('a[name="editar"]').on("click", function (e, attr) {
+            e.preventDefault();
 
-            }*@
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.idUsuario}) |
-            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-            @Html.ActionLink("Excluir", "Excluir", new { id=item.idUsuario })
-        </td>
-    </tr>
-}
+            abrirModal($(this).attr('id'));
+        })
 
-</table>
+    });
+
+    function abrirModal(idUsuario) {
+
+        if (idUsuario) {
+
+            $.ajax({
+                method: 'GET',
+                url: 'Usuario/GetUsuario?id=' + idUsuario
+            }).
+                success(function (data) {
+                    //{'id': 1, 'nome': 'rafael', 'idade': 21}
+                    
+                    //$('#formulario').map(data);
+                    $("input[name='idUsuario']").val(data.idUsuario);
+                    $("input[name='Nome']").val(data.Nome);
+                    $("input[name='Email']").val(data.Email);
+                    $("input[name='Senha']").val(data.Senha);
+                    $("input[name='Permissao']").val(data.Permissao);
+
+                });
+        }
+
+        //Exibir Modal
+        modal = document.getElementById("modal").style.visibility;
+        if (modal == "hidden") {
+            document.getElementById("modal").style.visibility = "visible";
+        }
+        if (modal == "visible") {
+            document.getElementById("modal").style.visibility = "hidden";
+        }
+
+    }
+</script>
+
+    <div id="goibada" class="login-box-interno">
+        <div id="login-box-label">
+            <h1> Usuários </h1>
+        </div>
+        <div class="login-form">
+            <div style="height: 80%; width: 100%; overflow: auto;">
+                <table>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.idUsuario)</th>
+                        <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                        <th>@Html.DisplayNameFor(model => model.Email)</th>
+                        <th>@Html.DisplayNameFor(model => model.Senha)</th>
+                        <th>@Html.DisplayNameFor(model => model.Permissao)</th>
+                        <th>@Html.DisplayNameFor(model => model.Eventos)</th>
+                        
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.idUsuario)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Senha)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Permissao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Eventos)
+                            </td>
+                            <td>
+                                Possa funcionar--> <a onclick="abrirModal('editar');" id="@item.idUsuario">NAO CLIQUE</a> |
+                                --> @Html.ActionLink("Editar", "", "", new { name = "editar", id = item.idUsuario })
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <button type="button" class="btn_login" onclick="abrirModal();">Cadastrar Novos Usuarios</button>
+        </div>
+    </div>
+<!-- Estrutura do modal -->
+<div id="modal" class="modal-cadastro">
+    <a class="close" onclick="abrirModal();">X</a>
+    <form id="login-box" name="formulario" class="formulario" onsubmit="return validaInfo()" method="post">
+        <div id="modal-interno" class="login-box">
+            <div id="login-box-label">
+                <h1> Novo Usuário </h1>
+            </div>
+            <div class="login-form">
+                <fieldset>
+                    <legend>Dados Pessoais:</legend>
+                    <div class="control-group">
+                        <div>
+
+                            <div class="form-divs">
+                                
+                                <input name="idUsuario" type="hidden" placeholder="idUsuario" class="login-field" id="input-usuario" />
+                            </div>
+
+                            <div class="form-divs">
+                                <label for="input-usuario">Nome:</label>
+                                <input name="Nome" type="text" placeholder="Nome" class="login-field" id="input-usuario" />
+                            </div>
+                            <div class="form-divs">
+                                <label for="input-usuario">Email:</label>
+                                <input name="Email" type="text" placeholder="Email" class="login-field" id="input-usuario" />
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-divs">
+                                <label for="input-usuario">Senha:</label>
+                                <input name="Senha" type="password" placeholder="senha" class="login-field" id="input-usuario" />
+                            </div>
+                            <div class="form-divs">
+                                <label for="input-usuario">Confirmar senha:</label>
+                                <input name="confirmar senha" type="text" placeholder="confirmar senha" class="login-field" id="input-usuario" />
+                            </div>
+
+                            <div class="form-divs">
+                                <label for="input-usuario">Nivel de Permissão:</label>
+                                <input name="Permissao" type="number" placeholder="0" class="login-field" id="input-usuario" />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Outros Dados:</legend>
+                    <div class="control-group">
+                        <div>
+                            <label for="input-usuario">Eventos</label>
+                            <select>
+                                <option value="volvo">Futebol</option>
+                                <option value="saab">Atletismo</option>
+                                <option value="opel">Natação</option>
+                                <option value="audi">Volei</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="input-usuario">Cargo</label>
+                            <select>
+                                <option value="volvo">Futebol</option>
+                                <option value="saab">Atletismo</option>
+                                <option value="opel">Natação</option>
+                                <option value="audi">Volei</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+                </form>
+    
+                <button type="submit" class="btn_login">Cadastrar</button>
+            </div>
+        </div>
+</div>

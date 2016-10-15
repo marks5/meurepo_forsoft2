@@ -31,6 +31,7 @@ namespace Forsoft2.Aplicacao
         {
             var strQuery = "";
             strQuery += " UPDATE USUARIOS SET";
+            strQuery += string.Format(" nome = '{0}',", usuario.Nome);
             strQuery += string.Format(" email = '{0}',", usuario.Email);
             strQuery += string.Format(" senha = '{0}',", usuario.Senha);
             strQuery += string.Format(" permissao = '{0}' ", usuario.Permissao);
