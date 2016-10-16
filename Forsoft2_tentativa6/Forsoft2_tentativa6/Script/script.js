@@ -19,10 +19,35 @@ function validaInfo() {
     }
 }
 
+//function validainfo2(){
+//    if ($('label[for="input-usuario"]').val() == "") {
+//        this.focus();
+//        this.style.borderColor = "#3DA2F4";
+//        $("#msg_erro").style.visibility = "visible";
+//    } if($('label[id="email"]'))
+//}
+$.validator.setDefaults({
+    debug: true,
+    success: "valid"
+});
+$("#formulario").validate({
+    rules: {
+        email: {
+            required: true,
+            email: true
+        },
+        inputusuario: {
+            required: true
+        }
+    }
+});
+
 function setarVisibilidade(){
-	document.getElementById("modal").style.visibility = "hidden";
+    //$("#modal").style.visibility = 'visible';
+    document.getElementById("modal").style.visibility = "hidden";
 	console.log("foi");
 }
+
 
 
 

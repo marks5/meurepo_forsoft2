@@ -7,14 +7,35 @@
 
 <script>
     $(function () {
-
         $('a[name="editar"]').on("click", function (e, attr) {
             e.preventDefault();
-
             abrirModal($(this).attr('id'));
         })
-
     });
+
+    $(function () {
+        $('a[name="excluir"]').click(function (e, attr) {
+            e.preventDefault();
+            excluirModal($(this).attr('id'));
+        })
+    });
+
+    function excluirModal(idUsuario) {
+        if (idUsuario) {
+            //preciso de alguma caixa em html e css para exclusão
+            var data = idUsuario;
+            $.ajax({
+                method: 'DELETE',
+                url: 'Usuario/Excluir',
+                data: { id: data },
+                cache: false,
+                success: function () {
+                    //alguma viagem aqui qualquer
+                    location.reload();
+                }
+            })
+        }
+    }
 
     function abrirModal(idUsuario) {
 
@@ -87,10 +108,10 @@
                                 @Html.DisplayFor(modelItem => item.Eventos)
                             </td>
                             <td>
-                                Possa funcionar--> <a onclick="abrirModal('editar');" id="@item.idUsuario">NAO CLIQUE</a> |
-                                --> @Html.ActionLink("Editar", "", "", new { name = "editar", id = item.idUsuario })
-                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                @*Possa funcionar--> <a onclick="abrirModal('editar');" id="@item.idUsuario">NAO CLIQUE</a> |
+                                -->*@ @Html.ActionLink("Editar", "", "", new { name = "editar", id = item.idUsuario }) |
+                                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                                @Html.ActionLink("Delete", "","", new { name = "excluir", id=item.idUsuario })
                             </td>
                         </tr>
                     }
@@ -102,7 +123,7 @@
 <!-- Estrutura do modal -->
 <div id="modal" class="modal-cadastro">
     <a class="close" onclick="abrirModal();">X</a>
-    <form id="login-box" name="formulario" class="formulario" onsubmit="return validaInfo()" method="post">
+    <form id="formulario" name="formulario" class="formulario" onsubmit="return validaInfo()" method="post">
         <div id="modal-interno" class="login-box">
             <div id="login-box-label">
                 <h1> Novo Usuário </h1>
@@ -119,26 +140,26 @@
                             </div>
 
                             <div class="form-divs">
-                                <label for="input-usuario">Nome:</label>
+                                <label for="inputusuario">Nome:</label>
                                 <input name="Nome" type="text" placeholder="Nome" class="login-field" id="input-usuario" />
                             </div>
                             <div class="form-divs">
-                                <label for="input-usuario">Email:</label>
+                                <label for="email" id="email">Email:</label>
                                 <input name="Email" type="text" placeholder="Email" class="login-field" id="input-usuario" />
                             </div>
                         </div>
                         <div>
                             <div class="form-divs">
-                                <label for="input-usuario">Senha:</label>
+                                <label for="inputusuario">Senha:</label>
                                 <input name="Senha" type="password" placeholder="senha" class="login-field" id="input-usuario" />
                             </div>
                             <div class="form-divs">
-                                <label for="input-usuario">Confirmar senha:</label>
+                                <label for="inputusuario">Confirmar senha:</label>
                                 <input name="confirmar senha" type="text" placeholder="confirmar senha" class="login-field" id="input-usuario" />
                             </div>
 
                             <div class="form-divs">
-                                <label for="input-usuario">Nivel de Permissão:</label>
+                                <label for="inputusuario">Nivel de Permissão:</label>
                                 <input name="Permissao" type="number" placeholder="0" class="login-field" id="input-usuario" />
                             </div>
                         </div>
@@ -148,7 +169,7 @@
                     <legend>Outros Dados:</legend>
                     <div class="control-group">
                         <div>
-                            <label for="input-usuario">Eventos</label>
+                            <label for="inputusuario">Eventos</label>
                             <select>
                                 <option value="volvo">Futebol</option>
                                 <option value="saab">Atletismo</option>
@@ -157,7 +178,7 @@
                             </select>
                         </div>
                         <div>
-                            <label for="input-usuario">Cargo</label>
+                            <label for="inputusuario">Cargo</label>
                             <select>
                                 <option value="volvo">Futebol</option>
                                 <option value="saab">Atletismo</option>

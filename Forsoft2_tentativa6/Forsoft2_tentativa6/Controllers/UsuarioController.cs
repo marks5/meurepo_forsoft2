@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Http;
 
 namespace Forsoft2_tentativa6.Controllers
 {
@@ -17,7 +18,7 @@ namespace Forsoft2_tentativa6.Controllers
             return View(appUsuario);
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Index(Usuario usuario)
         {
             var CatchUsuario = new UsuarioAplicacao();
@@ -29,6 +30,14 @@ namespace Forsoft2_tentativa6.Controllers
         {
             var resultado = new UsuarioAplicacao().ListarPorID(id);
             return Json(resultado, JsonRequestBehavior.AllowGet);
+        }
+
+        [System.Web.Http.HttpDelete]
+        public void Excluir(int id)
+        {
+            var CatchUsuario = new UsuarioAplicacao();
+            CatchUsuario.Excluir(id);
+            //return RedirectToAction("Index");
         }
     }
 

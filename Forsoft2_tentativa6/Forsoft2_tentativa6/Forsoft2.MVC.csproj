@@ -132,6 +132,7 @@
     <Content Include="fonts\codropsicons.eot" />
     <Content Include="fonts\codropsicons.ttf" />
     <Content Include="fonts\codropsicons.woff" />
+    <None Include="Properties\PublishProfiles\123.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Imagens\quadra.jpg" />
     <Content Include="Imagens\stevent.jpg" />
@@ -174,7 +175,6 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Autenticador\index.cshtml" />
-    <None Include="Properties\PublishProfiles\aeh0.pubxml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Usuario\Index.cshtml" />
