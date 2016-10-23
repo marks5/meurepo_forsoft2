@@ -181,6 +181,7 @@
     <Content Include="Views\Recurso\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutPageUsuario.cshtml" />
     <Content Include="Views\Shared\_LayoutPageRecurso.cshtml" />
+    <Content Include="Views\Shared\_LayoutPageRecursoNovo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

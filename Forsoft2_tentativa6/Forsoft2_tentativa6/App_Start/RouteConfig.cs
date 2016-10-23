@@ -16,7 +16,7 @@ namespace Forsoft2.MVC
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "values", action = "Get", id = UrlParameter.Optional }
+                defaults: new { controller = "Autenticador", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -7,30 +7,33 @@ namespace Forsoft2.API_REST.Controllers
 {
     public class UsuariosController : ApiController
     {
-        // GET api/values
+        // GET api/usuarioAPI/
         public List<Usuario> Get()
         {
             return new UsuarioAplicacao().ListarTodos();
         }
 
-        // GET api/values/5
+        // GET api/usuarioAPI/5
         public Usuario Get(int id)
         {
             return new UsuarioAplicacao().ListarPorID(id);
         }
 
-        // POST api/values
+        // POST api/usuarioAPI
         public void Post([FromBody]Usuario usuario)
         {
-
+            var CatchUsuario = new UsuarioAplicacao();
+            CatchUsuario.Salvar(usuario);
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/usuarioAPI/5
+        public void Put(int id, [FromBody]Usuario usuario)
         {
+            var CatchUsuario = new UsuarioAplicacao();
+            CatchUsuario.Salvar(usuario);
         }
 
-        // DELETE api/values/5
+        // DELETE api/usuarioAPI/5
         public void Delete(int id)
         {
             new UsuarioAplicacao().Excluir(id);

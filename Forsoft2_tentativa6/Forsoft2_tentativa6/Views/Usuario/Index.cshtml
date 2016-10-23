@@ -9,7 +9,7 @@
     $(function () {
         $('a[name="editar"]').on("click", function (e, attr) {
             e.preventDefault();
-            abrirModal($(this).attr('id'));
+            editarModal($(this).attr('id'));
         })
     });
 
@@ -23,10 +23,12 @@
     function excluirModal(idUsuario) {
         if (idUsuario) {
             //preciso de alguma caixa em html e css para exclusão
+            var confirmar = confirm("Deseja Realmente Apagar ?");
             var data = idUsuario;
+            if (confirmar){
             $.ajax({
-                method: 'DELETE',
-                url: 'Usuario/Excluir',
+                method: 'POST',
+                url: 'Usuario/Excluir/',
                 data: { id: data },
                 cache: false,
                 success: function () {
@@ -34,29 +36,42 @@
                     location.reload();
                 }
             })
+            }
         }
     }
 
-    function abrirModal(idUsuario) {
+    function editarModal(idUsuario) {
 
         if (idUsuario) {
-
             $.ajax({
                 method: 'GET',
                 url: 'Usuario/GetUsuario?id=' + idUsuario
             }).
                 success(function (data) {
-                    //{'id': 1, 'nome': 'rafael', 'idade': 21}
-                    
-                    //$('#formulario').map(data);
                     $("input[name='idUsuario']").val(data.idUsuario);
                     $("input[name='Nome']").val(data.Nome);
                     $("input[name='Email']").val(data.Email);
-                    $("input[name='Senha']").val(data.Senha);
                     $("input[name='Permissao']").val(data.Permissao);
-
                 });
         }
+
+        //Exibir Modal
+        modal = document.getElementById("modal").style.visibility;
+        if (modal == "hidden") {
+            document.getElementById("modal").style.visibility = "visible";
+        }
+        if (modal == "visible") {
+            document.getElementById("modal").style.visibility = "hidden";
+        }
+    }
+
+    function abrirModal() {
+
+        $("input[name='idUsuario']").val("");
+        $("input[name='Nome']").val("");
+        $("input[name='Email']").val("");
+        $("input[name='Senha']").val("");
+        $("input[name='Permissao']").val("");
 
         //Exibir Modal
         modal = document.getElementById("modal").style.visibility;
@@ -81,9 +96,7 @@
                         <th>@Html.DisplayNameFor(model => model.idUsuario)</th>
                         <th>@Html.DisplayNameFor(model => model.Nome)</th>
                         <th>@Html.DisplayNameFor(model => model.Email)</th>
-                        <th>@Html.DisplayNameFor(model => model.Senha)</th>
                         <th>@Html.DisplayNameFor(model => model.Permissao)</th>
-                        <th>@Html.DisplayNameFor(model => model.Eventos)</th>
                         
                     </tr>
                     @foreach (var item in Model)
@@ -99,13 +112,7 @@
                                 @Html.DisplayFor(modelItem => item.Email)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Senha)
-                            </td>
-                            <td>
                                 @Html.DisplayFor(modelItem => item.Permissao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Eventos)
                             </td>
                             <td>
                                 @*Possa funcionar--> <a onclick="abrirModal('editar');" id="@item.idUsuario">NAO CLIQUE</a> |
@@ -117,7 +124,7 @@
                     }
                 </table>
             </div>
-            <button type="button" class="btn_login" onclick="abrirModal();">Cadastrar Novos Usuarios</button>
+            <button type="button" class="btn_login" onclick="abrirModal()">Cadastrar Novos Usuarios</button>
         </div>
     </div>
 <!-- Estrutura do modal -->
@@ -149,14 +156,14 @@
                             </div>
                         </div>
                         <div>
-                            <div class="form-divs">
+                            @*<div class="form-divs">
                                 <label for="inputusuario">Senha:</label>
                                 <input name="Senha" type="password" placeholder="senha" class="login-field" id="input-usuario" />
                             </div>
                             <div class="form-divs">
                                 <label for="inputusuario">Confirmar senha:</label>
                                 <input name="confirmar senha" type="text" placeholder="confirmar senha" class="login-field" id="input-usuario" />
-                            </div>
+                            </div>*@
 
                             <div class="form-divs">
                                 <label for="inputusuario">Nivel de Permissão:</label>

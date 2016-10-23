@@ -16,9 +16,11 @@ namespace Forsoft2.Aplicacao
         private void Inserir(Usuario usuario)
         {
             var strQuery = "";
-            strQuery += " INSERT INTO USUARIOS (nome, email, senha, permissao) ";
-            strQuery += string.Format(" VALUES ('{0}','{1}','{2}',{3})",usuario.Nome,usuario.Email
-                ,usuario.Senha,usuario.Permissao);
+            strQuery += " INSERT INTO _USUARIO_ (nome, email, permissao) ";
+            strQuery += string.Format(" VALUES ('{0}','{1}','{2}')",
+                usuario.Nome,
+                usuario.Email,
+                usuario.Permissao);
 
             using (contexto = new Contexto())
             {
@@ -30,12 +32,11 @@ namespace Forsoft2.Aplicacao
         private void Alterar(Usuario usuario)
         {
             var strQuery = "";
-            strQuery += " UPDATE USUARIOS SET";
+            strQuery += " UPDATE _USUARIO_ SET";
             strQuery += string.Format(" nome = '{0}',", usuario.Nome);
             strQuery += string.Format(" email = '{0}',", usuario.Email);
-            strQuery += string.Format(" senha = '{0}',", usuario.Senha);
             strQuery += string.Format(" permissao = '{0}' ", usuario.Permissao);
-            strQuery += string.Format(" WHERE idUsuario = '{0}'", usuario.idUsuario);
+            strQuery += string.Format(" WHERE id = '{0}'", usuario.idUsuario);
 
             using (contexto = new Contexto())
             {
@@ -56,7 +57,7 @@ namespace Forsoft2.Aplicacao
         {
             using(contexto = new Contexto())
             {
-                var strQuery = string.Format(" DELETE FROM USUARIOS WHERE idUsuario = {0}", id);
+                var strQuery = string.Format(" DELETE FROM _USUARIO_ WHERE id = {0}", id);
                 contexto.ExecutaComando(strQuery);
             }
         }
@@ -65,7 +66,7 @@ namespace Forsoft2.Aplicacao
         {
             using (contexto = new Contexto())
             {
-                var strQuery = "SELECT * FROM USUARIOS";
+                var strQuery = "SELECT * FROM _USUARIO_";
                 var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
                 return TransformaReaderEmListadeObjeto(retornoDataReader);
             }
@@ -75,7 +76,7 @@ namespace Forsoft2.Aplicacao
         {
             using (contexto = new Contexto())
             {
-                var strQuery = string.Format("SELECT * FROM USUARIOS WHERE idUsuario = {0}",id);
+                var strQuery = string.Format("SELECT * FROM _USUARIO_ WHERE id = {0}",id);
                 var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
                 return TransformaReaderEmListadeObjeto(retornoDataReader).FirstOrDefault();
             }
@@ -88,10 +89,9 @@ namespace Forsoft2.Aplicacao
             {
                 var temObjeto = new Usuario()
                 {
-                    idUsuario = int.Parse(reader["idUsuario"].ToString()),
+                    idUsuario = int.Parse(reader["id"].ToString()),
                     Nome = reader["nome"].ToString(),
                     Email = reader["email"].ToString(),
-                    Senha = reader["senha"].ToString(),
                     Permissao = Convert.ToInt32(reader["permissao"].ToString()),
                     //Eventos = ListarTodosEventosPorUsuario(int.Parse(reader["idUsuario"].ToString()))
 
@@ -103,11 +103,11 @@ namespace Forsoft2.Aplicacao
             return usuarios;
         }
 
-        private List<Evento> ListarTodosEventosPorUsuario(int id)
+        public List<Evento> ListarTodosEventosPorUsuario(int id)
         {
             using (contexto = new Contexto())
             {
-                var strQuery = string.Format("SELECT * FROM USUARIOEVENTO WHERE idUsuario = {0}",id);
+                var strQuery = string.Format("SELECT * FROM _USUARIOEVENTO_ WHERE idUsuario = {0}",id);
                 var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
                 return TransformaReaderEmListadeObjetoEV(retornoDataReader);
             }

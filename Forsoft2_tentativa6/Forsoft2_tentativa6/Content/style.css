@@ -10,21 +10,117 @@
 html {
     /*background: #92BFCA;*/
     background-size: cover;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 14px;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5185a5+0,72b3e5+100 */
-    background: rgb(81,133,165); /* Old browsers */
-    background: -moz-linear-gradient(top,  rgb(81,133,165) 0%, rgb(114,179,229) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  rgb(81,133,165) 0%,rgb(114,179,229) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  rgb(81,133,165) 0%,rgb(114,179,229) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5185a5', endColorstr='#72b3e5',GradientType=0 ); /* IE6-9 */
 }
+
+/*NAVBAR*/
+
+/* Hexadecimal das cores da logo:
+azul: #1e74a6
+amarelo: #e6af2f */
+
+#nave{
+  font-size: 16px;
+  background-color: #1e74a6;
+  height: 42px;
+  margin-bottom: 0.5%;
+  box-shadow: 0px 2px 4px #888888;
+}
+
+#logo-nav {
+  color: white;
+  float: left;
+  height: 100%;
+}
+
+#logo-nav > img {
+  width: 160px;
+  left: 745px;
+}
+
+#texto-nav {
+    width: auto;
+    height: 60px;
+    background-color: aqua;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding-right: 10%;
+    overflow: hidden;
+    line-height: 38px;
+}
+
+li {
+    float: right;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 2px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #e6af2f;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 71px;
+    box-shadow: 0px 2px 4px #888888;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 0px 11px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+h1 {
+    text-align: center
+
+}
+
+h2 {
+    text-align: center
+}
+
+p {
+    padding: 8px;
+    font-size: 26px;
+}
+
+textarea {
+  border:2px solid #f2f5f7;
+	height: 60px;
+	width: 300px;
+}
+/*FIM NAVBAR*/
 
 #login {
   margin: -10px;
   box-shadow: 3px;
 	max-width: 40%;
-	border-radius: 5px;
   position: absolute;
 }
 
@@ -34,13 +130,6 @@ html {
 	margin-left: auto;
 	margin-right: auto;
 	height:80%;
-	border-radius: 5px;
-}
-
-#login-box-1 {
-	box-shadow: 3px;
-	width: 60%;
-	border-radius: 5px;
 }
 
 #pao {
@@ -48,51 +137,36 @@ html {
     float: left;
     max-width: 60%;
     position: relative;
-    border-radius: 10px;
-    text-align: center;
-    font: 18px sans-serif;
+    text-align: justify;
+    font-size: 18px;
     color: white;
-    text-shadow: 1px 0px 1px #333;
     padding: 3% 0 3% 0;
     margin: 10px;
 }
 
 .login-box-interno {
-	width: 50%;
-	background-color: rgba(51,51,51,.4);
+	width: 23%;
+	background-color: white;
 	margin-top: 10px;
-	border-radius: 8px;
 	padding: 2%;
-    margin: 1% auto;
-    border-radius: 5px;
-} 
+  margin: 1% auto;
+  box-shadow: 0px 1px 4px #888888;
+}
 
-/*.login-box-interno {
-	width: 50%;
-	background-color: rgba(51,51,51,.4);
-	margin-top: 10px;
-	border-radius: 8px;
-	padding: 2%;
-    margin left: 1%;
-	margin: 0 auto;
-    border-radius: 5px;
-}*/
-
-#login-box-label {
+.login-box-label {
 	text-align: center;
-	font: 18px sans-serif;
-	color: white;
-	text-shadow: 1px 0px 1px #333;
+	font-size: 18px;
+	color: black;
 }
 
 .login-form {
     text-align: center;
-    color: white;
+    color: black;
 }
 
 /* Página de Informações de Evento */
 #center {
-	width: 108%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 1.3%;
@@ -102,16 +176,14 @@ html {
 	box-shadow: 3px;
 	width: 100%;
 	margin: 0 auto;
-	border-radius: 5px;
 	clear: both;
 	margin-top: 1.3%;
 }
 
 .evento-box-label {
 	text-align: center;
-	font: 20px/45px sans-serif;
-	color: white;
-	text-shadow: 1px 0px 1px white;
+	font-size: 20px/45px;
+	color: black;
 }
 
 .evento-box-interno {
@@ -120,7 +192,6 @@ html {
 	min-height: 10%;
 	background-color: rgba(51,51,51,.4);
 	margin-top: 10px;
-	border-radius: 8px;
 	overflow: hidden;
 	padding: 2%;
 }
@@ -135,13 +206,12 @@ html {
 .input-div input {
   margin: 20px;
   background-color: #f2f5f7;
-	border-radius: 15px;
   display: inline-block;
   margin-bottom: 8px;
 	width: 250px;
 	height: 40px;
 	padding-left: 5px;
-	font: normal 13px sans-serif;
+	font-size: 13px;
 	border: 3px solid white;
 	outline: none;
 }
@@ -155,7 +225,7 @@ html {
 }
 
 .btn_login {
-    border: 3px solid #fff;
+    border: 3px solid black;
     color: #fff;;
     font-family: inherit;
     font-size: inherit;
@@ -184,13 +254,13 @@ html {
 
 .btn_login:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99), color-stop(1, #599bb3));
-	background:-moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:-webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:-o-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:-ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background:-moz-linear-gradient(top, white 5%, whitesmoke 100%);
+	background:-webkit-linear-gradient(top, white 5%, whitesmoke 100%);
+	background:-o-linear-gradient(top, white 5%, whitesmoke 100%);
+	background:-ms-linear-gradient(top, white 5%, whitesmoke 100%);
+	background:linear-gradient(to bottom, white 5%, whitesmoke 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3',GradientType=0);
-	background-color:#408c99;
+	background-color:white;
 }
 
 #btn-box {
@@ -200,16 +270,15 @@ html {
 
 #msg_erro {
     font-size-adjust: auto;
-    font-family: sans-serif;
     font-weight: 600;
-    color: white;
+    color: black;
     visibility: hidden;
     margin-top: 7px;
     margin-bottom: 7px;
 }
 
 #recover {
-    color: white;
+    color: black;
 }
 
 #div-geral {
@@ -227,13 +296,12 @@ html {
 .control-group input {
   margin: 20px;
 	background-color: #f2f5f7;
-	border-radius: 15px;
   display: inline-block;
   margin-bottom: 8px;
 	width: 150px;
 	height: 40px;
 	padding-left: 5px;
-	font: normal 13px sans-serif;
+	font-size: 13px;
 	border: 3px solid white;
 	outline: none;
 }
@@ -241,19 +309,17 @@ html {
 .control-group select {
   margin: 20px;
 	background-color: #f2f5f7;
-	border-radius: 15px;
   display: inline-block;
   margin-bottom: 8px;
 	width: 200px;
 	height: 40px;
 	padding-left: 5px;
-	font: normal 13px sans-serif;
+	font-size: 13px;
 	border: 3px solid white;
 	outline: none;
 }
 
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 90%;
     background-color: white;
@@ -272,19 +338,19 @@ tr:nth-child(even) {
 }
 
 .foto {
-  background-image: url("../imagens/perfil.jpg");
-  background-size: 100%;
-  height: 100px;
-  width: 100px;
-  margin: 3% auto;
+    background-image: url('../Imagens/perfil.jpg');
+    background-size: 100%;
+    height: 100px;
+    width: 100px;
+    margin: 3% auto;
 }
 
 .foto2 {
-  background-image: url("../imagens/download.jpg");
-  background-size: 100%;
-  height: 100px;
-  width: 100px;
-  margin: auto;
+    background-image: url('../Imagens/download.jpg');
+    background-size: 100%;
+    height: 100px;
+    width: 100px;
+    margin: auto;
 }
 
 .info {
@@ -306,117 +372,7 @@ fieldset {
 #esquerdada {
   display: block;
   margin: 10px auto;
-    
 }
-
-/*NAVBAR*/
-
-#nave{
-  width: 100%;
-  font-size: 23px;
-  color: black;
-  font-weight: 900;
-  height: 75px;
-  margin-bottom: 0.5%;
-  /* background-color: rgba(75,75,75,.4); */
-}
-
-#logo-nav {
-  color: white;
-  float: left;
-  height: 100%;
-}
-
-#logo-nav > img {
-  width: 160px;
-  left: 745px;
-}
-
-#texto-nav {
-    width: auto;
-    height: 60px;
-    background-color: aqua;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    height: 96%;
-    padding-right: 10%;
-    overflow: hidden;
-    background-color: #333;
-    line-height: 40px;
-}
-
-li {
-    float: right;
-}
-
-li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: #2274A5;
-}
-
-li.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-h1 {
-
-    font-family: sans-serif;
-    text-align: center
-
-}
-
-h2 {
-
-    font-family: sans-serif;
-    text-align: center
-}
-
-p {
-    padding: 8px;
-    text-align: center;
-    font-size: 26px;
-}
-
-textarea {
-  border:2px solid #f2f5f7;
-	border-radius:10px;
-	height: 60px;
-	width: 300px;
-}
-/*FIM NAVBAR*/
 
 /* Modal */
 a {
@@ -430,9 +386,8 @@ a {
 	left: 0;
   margin: 0 auto;
   z-index: 99998; */
-  background: rgba(0,0,0,0.8);
+  background: none;
   position: absolute;
-  font-family: inherit;
   height: auto;
   width: 43%;
 visibility: hidden;
@@ -447,20 +402,17 @@ visibility: hidden;
 .close {
 	background: #606061;
 	color: #FFFFFF;
-	line-height: 25px;
+	line-height: 22px;
 	position: absolute;
-	right: -12px;
+	right: 61px;
 	text-align: center;
-	top: -10px;
-	width: 24px;
+	top: -3px;
+	width: 22px;
 	text-decoration: none;
 	font-weight: bold;
-	-webkit-border-radius: 12px;
-	-moz-border-radius: 12px;
-	border-radius: 12px;
 	-moz-box-shadow: 1px 1px 3px #000;
 	-webkit-box-shadow: 1px 1px 3px #000;
-	box-shadow: 1px 1px 3px #000;
+	box-shadow: 0px 1px 3px #000;
   z-index: 1;
 }
 
@@ -470,28 +422,161 @@ visibility: hidden;
 display: inline-block;
 }
 
+/*Atributos dos paineis dashboard interno(pós evento selecionado)*/
+
+.lpanel{
+    width:80%;
+    height:30%;
+    margin:5% 1% 0% 8%;   
+    float:left;
+    box-shadow:0px 2px 4px #888888;
+}
+
+
+.rpanel{
+    width:85%;
+    height:69%;
+    margin:7% 5% 0% 2%;   
+    float:left;
+    box-shadow:0px 2px 4px #888888;
+}
+
+.rpanel h2, .lpanel h2{
+    
+    text-align:left;
+    margin: 1.26% 0% 0% 1%;
+}
+
+
+.rpanel table, .lpanel table{
+    
+    margin:1.80% 1.2% 2% 0.50%;
+    width:99%;
+}
+/*Inicio dos atributos do dashboard inicial (pré evento) */
+
+.content-event{
+    
+    box-shadow: 0px 2px 4px #888888;
+    margin:5% 8% 0% 12%;
+    width:74.50%;
+    height:20%;
+    
+}
+
+.content-event h2{
+    
+    text-align:left;
+    margin:5% 0% 2% 3%;
+    
+}
+.vacancy{
+    
+    width:20%;
+    height:10%;
+    margin:5% 0% 0% 40%;
+    box-shadow: 0px 2px 4px #888888;
+}
+.vacancy button{
+    
+    width: 100%;
+    height: 100%;
+}
+.buttondiv{
+    
+    float:left;
+    margin:2% 0% 0% 8%;
+    padding: 1%;
+    background-color:transparent;
+    overflow: hidden;
+    border: 2px solid black;
+    border-radius:80%;
+    
+}
+#buttontext{   
+    text-align: left;
+    width:5%;   
+    padding: 6% 0% 0% 30%;
+    white-space: nowrap;
+}
+.lillefter{
+    float:left;
+    width:60%;
+    height:80%;
+}
+.lilrighter{
+    float:right;
+    width:40%;
+    height:80%;
+}
+
+/*Fim dos atributos do dashboard main*/
+
+/*Nice Scroll-BAr */
+
+#box2000 > div
+{
+    -webkit-transition: width 0.2s ease; 
+    -moz-transition: width 0.2s ease; 
+    -o-transition: width 0.2s ease; 
+    -ms-transition: width 0.2s ease;     
+    transition: width 0.2s ease; 
+}
+#box2000 > div:hover
+{
+    width:120%!important;
+    cursor:pointer;
+}
+
+
 /*RESPONSIVIDADE*/
-@media screen and (max-width: 400px) {
-    #login-box-label {
+@media screen and (max-width: 600px) {
+    .login-box-label {
       height: 40px;
-      font: 12px/30px sans-serif;
+      font-size: 12px/30px;
     }
+	
     .login-box-interno {
-    width: 80%;
-    height: 80%;
-    font-size: 18px;
-    font-size: 20px;
-     
+	  margin-top: 5%;
+      width: 80%;
+      height: 50%;
+      font-size: 18px;
     }
-    
+
     .input-div input {
-    width: 75%;
-    height: 10%;
+      width: 75%;
+      height: 10%;
     }
-    
+
     li a, .dropbtn {
-    padding: 16px 3px;
-    font-size: 18px;
+      padding: 2px 15px;
+      font-size: 18px;
     }
+    .lpanel{
+      width:90%;
+      height:40%;
     
+    }
+    .rpanel{
+      width:90%;
+      height:40%;
+    
+    }
+    .content-event{
+      width:90%;
+      height:40%;
+    }
+    .vacancy{
+      width:90%;
+      height:5%;
+      
+    }
+    .lillefter{
+      width:90%;
+      height:40%
+    }
+    .lilrighter{
+      width:90%;
+      height:40%
+    }
 }

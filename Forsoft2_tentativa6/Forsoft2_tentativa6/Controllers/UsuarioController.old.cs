@@ -35,7 +35,7 @@ namespace Forsoft2_tentativa6.Controllers
                 return RedirectToAction("Index");
             }
             } catch (Exception e) {
-                Console.Write("E-mail já cadastrado");
+                Console.Write("E-mail já cadastrado",e);
                 ViewBag.Email = "Email já cadastrado";
                 return View(usuario);
             }

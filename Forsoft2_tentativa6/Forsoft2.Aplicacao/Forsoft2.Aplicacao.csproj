@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AtletaAplicacao.cs" />
+    <Compile Include="EventoAplicacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursoAplicacao.cs" />
     <Compile Include="UsuarioAplicacao.cs" />

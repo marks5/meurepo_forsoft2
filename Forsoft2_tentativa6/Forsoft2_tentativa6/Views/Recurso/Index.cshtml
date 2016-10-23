@@ -2,51 +2,180 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutListaRecurso.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageRecursoNovo.cshtml";
 }
+
+<script>
+    $(function () {
+        $('a[name="editar"]').on("click", function (e, attr) {
+            e.preventDefault();
+            editarModal($(this).attr('id'));
+        })
+    });
+
+    $(function () {
+        $('a[name="excluir"]').click(function (e, attr) {
+            e.preventDefault();
+            excluirModal($(this).attr('id'));
+        })
+    });
+
+    function excluirModal(idRecurso) {
+        if (idRecurso) {
+            //preciso de alguma caixa em html e css para exclusão
+            var confirmar = confirm("Deseja Realmente Apagar ?");
+            var data = idRecurso;
+            if (confirmar){
+            $.ajax({
+                method: 'POST',
+                url: 'Recurso/Excluir/',
+                data: { id: data },
+                cache: false,
+                success: function () {
+                    //alguma viagem aqui qualquer
+                    location.reload();
+                }
+            })
+            }
+        }
+    }
+
+    function editarModal(idRecurso) {
+
+        if (idRecurso) {
+            $.ajax({
+                method: 'GET',
+                url: 'Recurso/GetRecurso?id=' + idRecurso
+            }).
+                success(function (data) {
+                    $("input[name='idRecurso']").val(data.idRecurso);
+                    $("input[name='Nome']").val(data.Nome);
+                    $("input[name='Disponibilidade']").val(data.Disponibilidade);
+                    $("input[name='Descricao']").val(data.Descricao);
+                });
+        }
+
+        //Exibir Modal
+        modal = document.getElementById("modal").style.visibility;
+        if (modal == "hidden") {
+            document.getElementById("modal").style.visibility = "visible";
+        }
+        if (modal == "visible") {
+            document.getElementById("modal").style.visibility = "hidden";
+        }
+    }
+
+    function abrirModal() {
+
+        $("input[name='idRecurso']").val("");
+        $("input[name='Nome']").val("");
+        $("input[name='Disponibilidade']").val("");
+        $("input[name='Descricao']").val("");
+
+        //Exibir Modal
+        modal = document.getElementById("modal").style.visibility;
+        if (modal == "hidden") {
+            document.getElementById("modal").style.visibility = "visible";
+        }
+        if (modal == "visible") {
+            document.getElementById("modal").style.visibility = "hidden";
+        }
+
+    }
+</script>
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Cadastrar Recurso", "Cadastrar",null,new { @class = "btn_login"})
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idRecurso)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Disponibilidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idRecurso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Disponibilidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+<div id="login-box">
+    <div id="goibada" class="login-box-interno">
+        <div class="login-box-label">
+            <h1> Recursos </h1>
+        </div>
+        <div class="login-form">
+            <div style="height: 80%; width: 100%; overflow: auto;">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.idRecurso)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Disponibilidade)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descricao)
+                        </th>
+                        <th></th>
+                    </tr>
 
-</table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.idRecurso)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Disponibilidade)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "","", new { name="editar",id=item.idRecurso  }) |
+                                @Html.ActionLink("Excluir", "","", new { name="excluir",id=item.idRecurso })
+                            </td>
+                        </tr>
+                    }
+
+                </table>>
+            </div>
+            <button type="button" class="btn_login" onclick="abrirModal();">Cadastrar Novos Recursos</button>
+        </div>
+    </div>
+</div>
+<!-- Estrutura do modal -->
+<div id="modal" class="modal-cadastro">
+    <a class="close" onclick="abrirModal();">X</a>
+    <form id="login-box" name="formulario" onsubmit="return validaInfo()">
+        <div id="goibada" class="login-box-interno">
+            <div id="login-box-label">
+                <h1> Novo Recursos </h1>
+            </div>
+            <div class="login-form">
+                <fieldset>
+                    <legend>Dados do endereço:</legend>
+                    <div class="control-group">
+                        <div>
+                            <div class="form-divs">
+
+                                <input name="idRecurso" type="hidden" placeholder="idRecurso" class="login-field" id="input-usuario" />
+                            </div>
+                            <div class="form-divs">
+                                <label for="input-usuario">Nome:</label>
+                                <input name="Nome" type="text" placeholder="Nome" class="login-field" id="input-usuario" />
+                            </div>
+                            <div class="form-divs">
+                                <label for="input-usuario">Disponibildade:</label>
+                                <input name="Disponibilidade" type="checkbox" placeholder="Disponibilidade" class="login-field" id="input-usuario" />
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-divs">
+                                <label for="input-usuario">Descrição:</label>
+                                <input name="Descricao" type="text" placeholder="Descrição" class="login-field" id="input-usuario" />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn_login">Cadastrar</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Fim da estrutura do modal -->

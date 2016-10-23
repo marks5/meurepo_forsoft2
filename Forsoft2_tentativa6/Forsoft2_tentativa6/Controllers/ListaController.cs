@@ -21,20 +21,20 @@ namespace Forsoft2_tentativa6.Controllers
 
         public ActionResult Atletas()
         {
-            return Redirect("http://www.stevent.com/enderecoJavaAtleta");
+            return Redirect("http://www.stevent.com:8080/listarAtletas");
         }
 
         public ActionResult Equipes()
         {
-            return Redirect("http://www.stevent.com/enderecoJavaEquipe");
+            return Redirect("http://www.stevent.com:8080/listarEquipes");
         }
         public ActionResult Eventos()
         {
-            return Redirect("http://www.stevent.com/enderecoJavaEvento");
+            return Redirect("http://www.stevent.com:8080/listarEventos");
         }
         public ActionResult Locais()
         {
-            return Redirect("http://www.stevent.com/enderecoJavaLocal");
+            return Redirect("http://www.stevent.com:8080/listarLocais");
         }
     }
 }
