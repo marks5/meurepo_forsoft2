@@ -16,15 +16,34 @@ namespace Forsoft2.Aplicacao
         private void Inserir(Usuario usuario)
         {
             var strQuery = "";
-            strQuery += " INSERT INTO _USUARIO_ (nome, email, permissao) ";
-            strQuery += string.Format(" VALUES ('{0}','{1}','{2}')",
+            strQuery += " INSERT INTO USUARIO (login, permissao) ";
+            strQuery += string.Format(" VALUES ('{0}','{1}');",
+                usuario.Login,
+                usuario.Permissao);
+            strQuery += "SELECT CAST(LAST_INSERT_ID() AS UNSIGNED)";
+
+            int i = 0;
+            using (contexto = new Contexto())
+            {
+                i = contexto.ExecutaComandoINT(strQuery);
+            }
+
+            string a = "null";
+            var strQuery2 = "";
+            strQuery2 += " INSERT INTO PESSOA (nome, email, equipe, pais, qualificacao, atribuicao, idusuario) ";
+            strQuery2 += string.Format(" VALUES ('{0}','{1}', {2},'{3}','{4}','{5}',{6})",
                 usuario.Nome,
                 usuario.Email,
-                usuario.Permissao);
+                a,
+                usuario.Pais,
+                usuario.Qualificacao,
+                usuario.Atribuicao,
+                i);
+            //insert into pessoa(nome, email, equipe, pais, qualificacao, atribuicao, idusuario) values('Luan', 'Luan@staff.com', null, 'Brasil', 'Especialista de Som', 'S', 1);
 
             using (contexto = new Contexto())
             {
-                contexto.ExecutaComando(strQuery);
+                contexto.ExecutaComando(strQuery2);
             }
 
         }
@@ -32,10 +51,10 @@ namespace Forsoft2.Aplicacao
         private void Alterar(Usuario usuario)
         {
             var strQuery = "";
-            strQuery += " UPDATE _USUARIO_ SET";
+            strQuery += " UPDATE PESSOA SET";
             strQuery += string.Format(" nome = '{0}',", usuario.Nome);
             strQuery += string.Format(" email = '{0}',", usuario.Email);
-            strQuery += string.Format(" permissao = '{0}' ", usuario.Permissao);
+            //strQuery += string.Format(" permissao = '{0}' ", usuario.Permissao);
             strQuery += string.Format(" WHERE id = '{0}'", usuario.idUsuario);
 
             using (contexto = new Contexto())
@@ -57,7 +76,7 @@ namespace Forsoft2.Aplicacao
         {
             using(contexto = new Contexto())
             {
-                var strQuery = string.Format(" DELETE FROM _USUARIO_ WHERE id = {0}", id);
+                var strQuery = string.Format(" DELETE FROM PESSOA WHERE id = {0}", id);
                 contexto.ExecutaComando(strQuery);
             }
         }
@@ -66,7 +85,7 @@ namespace Forsoft2.Aplicacao
         {
             using (contexto = new Contexto())
             {
-                var strQuery = "SELECT * FROM _USUARIO_";
+                var strQuery = "SELECT * FROM PESSOA";
                 var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
                 return TransformaReaderEmListadeObjeto(retornoDataReader);
             }
@@ -76,7 +95,7 @@ namespace Forsoft2.Aplicacao
         {
             using (contexto = new Contexto())
             {
-                var strQuery = string.Format("SELECT * FROM _USUARIO_ WHERE id = {0}",id);
+                var strQuery = string.Format("SELECT * FROM PESSOA WHERE id = {0}",id);
                 var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
                 return TransformaReaderEmListadeObjeto(retornoDataReader).FirstOrDefault();
             }
@@ -92,9 +111,12 @@ namespace Forsoft2.Aplicacao
                     idUsuario = int.Parse(reader["id"].ToString()),
                     Nome = reader["nome"].ToString(),
                     Email = reader["email"].ToString(),
-                    Permissao = Convert.ToInt32(reader["permissao"].ToString()),
+                    //Permissao = Convert.ToInt32(reader["permissao"].ToString()),
                     //Eventos = ListarTodosEventosPorUsuario(int.Parse(reader["idUsuario"].ToString()))
-
+                    Equipe = new Equipe()
+                    {
+                        Nome = reader["nome"].ToString()
+                    }
                 };
                 usuarios.Add(temObjeto);
             }
@@ -103,31 +125,33 @@ namespace Forsoft2.Aplicacao
             return usuarios;
         }
 
-        public List<Evento> ListarTodosEventosPorUsuario(int id)
-        {
-            using (contexto = new Contexto())
-            {
-                var strQuery = string.Format("SELECT * FROM _USUARIOEVENTO_ WHERE idUsuario = {0}",id);
-                var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
-                return TransformaReaderEmListadeObjetoEV(retornoDataReader);
-            }
-        }
+        #region block
+        //public List<Evento> ListarTodosEventosPorUsuario(int id)
+        //{
+        //    using (contexto = new Contexto())
+        //    {
+        //        var strQuery = string.Format("SELECT * FROM _USUARIOEVENTO_ WHERE idUsuario = {0}",id);
+        //        var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
+        //        return TransformaReaderEmListadeObjetoEV(retornoDataReader);
+        //    }
+        //}
 
-        private List<Evento> TransformaReaderEmListadeObjetoEV(MySqlDataReader reader)
-        {
-            var eventos = new List<Evento>();
-            while (reader.Read())
-            {
-                var temObjeto = new Evento()
-                {
-                    idEvento = int.Parse(reader["idEvento"].ToString()),
-                    Nome = reader["nome"].ToString(),
-                };
-                eventos.Add(temObjeto);
-            }
+        //private List<Evento> TransformaReaderEmListadeObjetoEV(MySqlDataReader reader)
+        //{
+        //    var eventos = new List<Evento>();
+        //    while (reader.Read())
+        //    {
+        //        var temObjeto = new Evento()
+        //        {
+        //            idEvento = int.Parse(reader["idEvento"].ToString()),
+        //            Nome = reader["nome"].ToString(),
+        //        };
+        //        eventos.Add(temObjeto);
+        //    }
 
-            reader.Close();
-            return eventos;
-        }
+        //    reader.Close();
+        //    return eventos;
+        //}
+        #endregion
     }
 }

@@ -2,8 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/script.js"></script>
+    <script src="~/Script/script.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <link href="~/Content/style.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <title>Recursos</title>
 </head>
@@ -14,6 +17,7 @@
                 <a href="#" class="dropbtn">Listas</a>
                 <div class="dropdown-content">
                     <a href="#">@Html.ActionLink("Atletas", "Atletas", "Lista")</a>
+                    <a href="#">@Html.ActionLink("Usuarios", "Usuarios", "Lista")</a>
                     <a href="#">@Html.ActionLink("Equipe", "Equipes", "Lista")</a>
                     <a href="#">@Html.ActionLink("Evento", "Eventos", "Lista")</a>
                     <a href="#">@Html.ActionLink("Local", "Locais", "Lista")</a>

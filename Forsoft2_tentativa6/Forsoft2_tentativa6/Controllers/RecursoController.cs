@@ -36,6 +36,7 @@ namespace Forsoft2_tentativa6.Controllers
         {
             var CatchRecurso = new RecursoAplicacao();
             CatchRecurso.Excluir(id);
-            return RedirectToAction("Index");        }
+            return RedirectToAction("Index");
+        }
     }
 }

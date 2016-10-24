@@ -90,7 +90,7 @@
             <h1> Usuários </h1>
         </div>
         <div class="login-form">
-            <div style="height: 80%; width: 100%; overflow: auto;">
+            <div style="height: 70%; width: 100%; overflow: scroll;">
                 <table>
                     <tr>
                         <th>@Html.DisplayNameFor(model => model.idUsuario)</th>
@@ -130,7 +130,7 @@
 <!-- Estrutura do modal -->
 <div id="modal" class="modal-cadastro">
     <a class="close" onclick="abrirModal();">X</a>
-    <form id="formulario" name="formulario" class="formulario" onsubmit="return validaInfo()" method="post">
+    <form id="login-box" name="formulario" class="formulario" onsubmit="return validaInfo()" method="post">
         <div id="modal-interno" class="login-box">
             <div id="login-box-label">
                 <h1> Novo Usuário </h1>
@@ -142,7 +142,6 @@
                         <div>
 
                             <div class="form-divs">
-                                
                                 <input name="idUsuario" type="hidden" placeholder="idUsuario" class="login-field" id="input-usuario" />
                             </div>
 
@@ -156,26 +155,37 @@
                             </div>
                         </div>
                         <div>
-                            @*<div class="form-divs">
-                                <label for="inputusuario">Senha:</label>
-                                <input name="Senha" type="password" placeholder="senha" class="login-field" id="input-usuario" />
+                            <div class="form-divs">
+                                <label for="inputusuario">Login:</label>
+                                <input name="Login" type="text" placeholder="Login" class="login-field" id="input-usuario" />
                             </div>
                             <div class="form-divs">
-                                <label for="inputusuario">Confirmar senha:</label>
-                                <input name="confirmar senha" type="text" placeholder="confirmar senha" class="login-field" id="input-usuario" />
-                            </div>*@
+                                <label for="inputusuario">Pais:</label>
+                                <input name="Pais" type="text" placeholder="Pais" class="login-field" id="input-usuario" />
+                            </div>
 
                             <div class="form-divs">
                                 <label for="inputusuario">Nivel de Permissão:</label>
                                 <input name="Permissao" type="number" placeholder="0" class="login-field" id="input-usuario" />
                             </div>
+
+                            <div class="form-divs">
+                                <label for="inputusuario">Qualificacao:</label>
+                                <input name="Qualificacao" type="text" placeholder="Seu cargo" class="login-field" id="input-usuario" />
+                            </div>
+
+                            <div class="form-divs">
+                                <label for="inputusuario">Nivel de Permissão:</label>
+                                <input name="Atribuicao" type="text" placeholder="A ou S" class="login-field" id="input-usuario" />
+                            </div>
+
                         </div>
                     </div>
                 </fieldset>
                 <fieldset>
                     <legend>Outros Dados:</legend>
                     <div class="control-group">
-                        <div>
+                        <div>zom
                             <label for="inputusuario">Eventos</label>
                             <select>
                                 <option value="volvo">Futebol</option>

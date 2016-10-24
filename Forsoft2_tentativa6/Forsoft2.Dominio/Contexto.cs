@@ -33,6 +33,18 @@ namespace Forsoft2.Repositório
             cmdComando.ExecuteNonQuery();
         }
 
+        public int ExecutaComandoINT(string strQuery)
+        {
+            var cmdComando = new MySqlCommand
+            {
+                CommandText = strQuery,
+                CommandType = CommandType.Text,
+                Connection = minhaConexao
+            };
+
+            return Convert.ToInt32(cmdComando.ExecuteScalar());
+        }
+
         public MySqlDataReader ExecutaComandoComRetorno(string strQuery)
         {
             var cmdComando = new MySqlCommand(strQuery, minhaConexao);

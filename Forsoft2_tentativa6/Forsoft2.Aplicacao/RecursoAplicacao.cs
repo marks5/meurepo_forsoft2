@@ -17,7 +17,7 @@ namespace Forsoft2.Aplicacao
         {
             var strQuery = "";
             strQuery += " INSERT INTO _RECURSO_ (nome, disponibilidade, descricao) ";
-            strQuery += string.Format(" VALUES ('{0}','{1}','{2}')", 
+            strQuery += string.Format(" VALUES ('{0}',{1},'{2}')", 
                 recurso.Nome, 
                 recurso.Disponibilidade, 
                 recurso.Descricao);
@@ -34,7 +34,7 @@ namespace Forsoft2.Aplicacao
             var strQuery = "";
             strQuery += " UPDATE _RECURSO_ SET";
             strQuery += string.Format(" nome = '{0}',", recurso.Nome);
-            strQuery += string.Format(" disponibilidade = '{0}',", recurso.Disponibilidade);
+            strQuery += string.Format(" disponibilidade = {0},", recurso.Disponibilidade);
             strQuery += string.Format(" descricao = '{0}' ", recurso.Descricao);
             strQuery += string.Format(" WHERE id = '{0}'", recurso.idRecurso);
 

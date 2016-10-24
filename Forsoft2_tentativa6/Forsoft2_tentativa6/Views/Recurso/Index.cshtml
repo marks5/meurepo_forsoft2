@@ -19,6 +19,12 @@
             excluirModal($(this).attr('id'));
         })
     });
+    $(function () {
+        $('input[name="Disponibilidade"]').change(function () {
+            cb = $(this);
+            cb.val(cb.prop('checked'));
+        })
+    })
 
     function excluirModal(idRecurso) {
         if (idRecurso) {
@@ -41,7 +47,7 @@
     }
 
     function editarModal(idRecurso) {
-
+        console.log(idRecurso);
         if (idRecurso) {
             $.ajax({
                 method: 'GET',
@@ -84,7 +90,6 @@
     }
 </script>
 
-<h2>Index</h2>
 
 
 <div id="login-box">
@@ -93,7 +98,7 @@
             <h1> Recursos </h1>
         </div>
         <div class="login-form">
-            <div style="height: 80%; width: 100%; overflow: auto;">
+            <div style="height: 70%; width: 100%; overflow: scroll;">
                 <table class="table">
                     <tr>
                         <th>
@@ -133,7 +138,7 @@
                         </tr>
                     }
 
-                </table>>
+                </table>
             </div>
             <button type="button" class="btn_login" onclick="abrirModal();">Cadastrar Novos Recursos</button>
         </div>
@@ -142,7 +147,7 @@
 <!-- Estrutura do modal -->
 <div id="modal" class="modal-cadastro">
     <a class="close" onclick="abrirModal();">X</a>
-    <form id="login-box" name="formulario" onsubmit="return validaInfo()">
+    <form id="login-box" name="formulario" onsubmit="return validaInfo()" method="post">
         <div id="goibada" class="login-box-interno">
             <div id="login-box-label">
                 <h1> Novo Recursos </h1>
@@ -153,8 +158,7 @@
                     <div class="control-group">
                         <div>
                             <div class="form-divs">
-
-                                <input name="idRecurso" type="hidden" placeholder="idRecurso" class="login-field" id="input-usuario" />
+                                <input name="idRecurso" type="hidden" placeholder="id" class="login-field" id="input-usuario" />
                             </div>
                             <div class="form-divs">
                                 <label for="input-usuario">Nome:</label>
