@@ -14,10 +14,12 @@ namespace Forsoft2.MVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
+                name: "Padrao",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Autenticador", action = "Index", id = UrlParameter.Optional }
             );
+
+
         }
     }
 }

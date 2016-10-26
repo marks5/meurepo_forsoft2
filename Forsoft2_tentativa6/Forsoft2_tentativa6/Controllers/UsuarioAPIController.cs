@@ -3,7 +3,7 @@ using Forsoft2.Dominio;
 using System.Collections.Generic;
 using System.Web.Http;
 
-namespace Forsoft2.API_REST.Controllers
+namespace Forsoft2_tentativa6.Controllers
 {
     public class UsuariosController : ApiController
     {
@@ -36,7 +36,7 @@ namespace Forsoft2.API_REST.Controllers
         // DELETE api/usuarioAPI/5
         public void Delete(int id)
         {
-            new UsuarioAplicacao().Excluir(id);
+            new RecursoAplicacao().Excluir(id);
         }
     }
 }

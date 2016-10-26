@@ -16,5 +16,7 @@ namespace Forsoft2.Dominio
         public string Pais { get; set; }
         public string Qualificacao { get; set; }
         public char Atribuicao { get; set; }
+
+        
     }
 }

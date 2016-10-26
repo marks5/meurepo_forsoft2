@@ -49,9 +49,14 @@
             }).
                 success(function (data) {
                     $("input[name='idUsuario']").val(data.idUsuario);
+                    $("input[name='Login']").val(data.Login);
                     $("input[name='Nome']").val(data.Nome);
                     $("input[name='Email']").val(data.Email);
-                    $("input[name='Permissao']").val(data.Permissao);
+                    //permissao e atribuicao faltam "setar" o select
+                    $("select[name='Permissao']").val(data.Permissao).change();
+                    $("input[name='Pais']").val(data.Pais);
+                    $("input[name='Qualificacao']").val(data.Qualificacao);
+                    $("input[name='Atribuicao']").val(data.Atribuicao);
                 });
         }
 
@@ -68,10 +73,14 @@
     function abrirModal() {
 
         $("input[name='idUsuario']").val("");
+        $("input[name='Login']").val("");
         $("input[name='Nome']").val("");
         $("input[name='Email']").val("");
-        $("input[name='Senha']").val("");
-        $("input[name='Permissao']").val("");
+        //$("select[name='Permissao']").val("");
+        //falta equipe aqui
+        $("input[name='Pais']").val("");
+        $("input[name='Qualificacao']").val("");
+        //$("input[name='Atribuicao']").val("");
 
         //Exibir Modal
         modal = document.getElementById("modal").style.visibility;
@@ -94,9 +103,15 @@
                 <table>
                     <tr>
                         <th>@Html.DisplayNameFor(model => model.idUsuario)</th>
+                        @*<th>@Html.DisplayNameFor(model => model.Login)</th>*@
                         <th>@Html.DisplayNameFor(model => model.Nome)</th>
                         <th>@Html.DisplayNameFor(model => model.Email)</th>
-                        <th>@Html.DisplayNameFor(model => model.Permissao)</th>
+                        @*<th>@Html.DisplayNameFor(model => model.Permissao)</th>*@
+                        <th>@Html.DisplayNameFor(model => model.Equipe)</th>
+                        <th>@Html.DisplayNameFor(model => model.Pais)</th>
+                        <th>@Html.DisplayNameFor(model => model.Qualificacao)</th>
+                        <th>@Html.DisplayNameFor(model => model.Atribuicao)</th>
+                        <th>Editar</th>
                         
                     </tr>
                     @foreach (var item in Model)
@@ -105,14 +120,29 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.idUsuario)
                             </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Login)
+                            </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Nome)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Email)
                             </td>
-                            <td>
+                            @*<td>
                                 @Html.DisplayFor(modelItem => item.Permissao)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Equipe.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Pais)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Qualificacao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Atribuicao)
                             </td>
                             <td>
                                 @*Possa funcionar--> <a onclick="abrirModal('editar');" id="@item.idUsuario">NAO CLIQUE</a> |
@@ -124,90 +154,91 @@
                     }
                 </table>
             </div>
-            <button type="button" class="btn_login" onclick="abrirModal()">Cadastrar Novos Usuarios</button>
+            <button type="button" class="btn_login" onclick="abrirModal()">Cadastrar Novas Pessoas</button>
         </div>
     </div>
 <!-- Estrutura do modal -->
 <div id="modal" class="modal-cadastro">
     <a class="close" onclick="abrirModal();">X</a>
-    <form id="login-box" name="formulario" class="formulario" onsubmit="return validaInfo()" method="post">
-        <div id="modal-interno" class="login-box">
+    <form id="login-box" name="formulario" onsubmit="return validaInfo()" method="post">
+        <div id="goibada" class="login-box-interno">
             <div id="login-box-label">
-                <h1> Novo Usuário </h1>
+                <h1> Novo Atleta </h1>
             </div>
             <div class="login-form">
                 <fieldset>
                     <legend>Dados Pessoais:</legend>
                     <div class="control-group">
                         <div>
+                            <input name="idUsuario" type="text" placeholder="id" class="login-field" id="input-usuario" style="display: none;" />
+
 
                             <div class="form-divs">
-                                <input name="idUsuario" type="hidden" placeholder="idUsuario" class="login-field" id="input-usuario" />
+                                <label for="input-usuario">Login:</label>
+                                <input name="Login" type="text" placeholder="Login" class="login-field" id="input-usuario" /><br>
                             </div>
 
                             <div class="form-divs">
-                                <label for="inputusuario">Nome:</label>
-                                <input name="Nome" type="text" placeholder="Nome" class="login-field" id="input-usuario" />
+                                <label for="input-usuario">Permissão:</label>
+                                <select name="Permissao">
+                                    <option value="1">Ler</option>
+                                    <option value="2">Ler, Criar e Editar</option>
+                                    <option value="3">Ler, Criar, Editar e Excluir</option>
+                                </select>
                             </div>
+
                             <div class="form-divs">
-                                <label for="email" id="email">Email:</label>
-                                <input name="Email" type="text" placeholder="Email" class="login-field" id="input-usuario" />
+                                <label for="input-usuario">Nome:</label>
+                                <input name="Nome" type="text" placeholder="Nome" class="login-field" id="input-usuario" /><br>
+
                             </div>
+
+                            <div class="form-divs">
+                                <label for="input-usuario">E-mail:</label>
+                                <input name="Email" type="text" placeholder="E-mail" class="login-field" id="input-usuario" />
+                            </div>
+
                         </div>
                         <div>
+
                             <div class="form-divs">
-                                <label for="inputusuario">Login:</label>
-                                <input name="Login" type="text" placeholder="Login" class="login-field" id="input-usuario" />
-                            </div>
-                            <div class="form-divs">
-                                <label for="inputusuario">Pais:</label>
-                                <input name="Pais" type="text" placeholder="Pais" class="login-field" id="input-usuario" />
+                                <label for="input-usuario">Equipe:</label>
+                                <select name="equipe">
+                                    <option value="Equipe">Equipe</option>
+                                    <option value="Equipe">Equipe</option>
+                                    <option value="Equipe">Equipe</option>
+                                </select>
                             </div>
 
                             <div class="form-divs">
-                                <label for="inputusuario">Nivel de Permissão:</label>
-                                <input name="Permissao" type="number" placeholder="0" class="login-field" id="input-usuario" />
+                                <label for="input-usuario">País:</label>
+                                <input name="Pais" type="text" placeholder="País" class="login-field" id="input-usuario" />
                             </div>
 
                             <div class="form-divs">
-                                <label for="inputusuario">Qualificacao:</label>
-                                <input name="Qualificacao" type="text" placeholder="Seu cargo" class="login-field" id="input-usuario" />
+                                <label for="input-usuario">Qualificação:</label>
+                                <input name="Qualificacao" type="text" placeholder="Qualificação" class="login-field" id="input-usuario" />
                             </div>
 
                             <div class="form-divs">
-                                <label for="inputusuario">Nivel de Permissão:</label>
-                                <input name="Atribuicao" type="text" placeholder="A ou S" class="login-field" id="input-usuario" />
+                                <label for="input-usuario">Atribuição:</label>
+                                <select name="Atribuicao">
+                                    <option value="A">Atleta</option>
+                                    <option value="S">Staff</option>
+                                </select>
                             </div>
 
+
+                            </div>
                         </div>
-                    </div>
                 </fieldset>
-                <fieldset>
-                    <legend>Outros Dados:</legend>
-                    <div class="control-group">
-                        <div>zom
-                            <label for="inputusuario">Eventos</label>
-                            <select>
-                                <option value="volvo">Futebol</option>
-                                <option value="saab">Atletismo</option>
-                                <option value="opel">Natação</option>
-                                <option value="audi">Volei</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="inputusuario">Cargo</label>
-                            <select>
-                                <option value="volvo">Futebol</option>
-                                <option value="saab">Atletismo</option>
-                                <option value="opel">Natação</option>
-                                <option value="audi">Volei</option>
-                            </select>
-                        </div>
-                    </div>
-                </fieldset>
-                </form>
-    
+
+
                 <button type="submit" class="btn_login">Cadastrar</button>
             </div>
         </div>
-</div>
+        </form>
+
+    
+                <button type="submit" class="btn_login">Cadastrar</button>
+            </div>

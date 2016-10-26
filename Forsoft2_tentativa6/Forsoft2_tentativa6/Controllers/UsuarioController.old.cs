@@ -13,7 +13,7 @@ namespace Forsoft2_tentativa6.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var appUsuario = new UsuarioAplicacao().ListarTodos();
+            var appUsuario = new RecursoAplicacao().ListarTodos();
             return View(appUsuario);
         }
 
@@ -30,7 +30,7 @@ namespace Forsoft2_tentativa6.Controllers
             //checa se o modelo da view é válido
             if (ModelState.IsValid)
             {
-                var appUsuario = new UsuarioAplicacao();
+                var appUsuario = new RecursoAplicacao();
                     appUsuario.Salvar(usuario);
                 return RedirectToAction("Index");
             }
@@ -44,7 +44,7 @@ namespace Forsoft2_tentativa6.Controllers
 
         public ActionResult Editar(int id)
         {
-            var appUsuario = new UsuarioAplicacao();
+            var appUsuario = new RecursoAplicacao();
             var usuario = appUsuario.ListarPorID(id);
             if (usuario == null)
                 return HttpNotFound();
@@ -58,7 +58,7 @@ namespace Forsoft2_tentativa6.Controllers
         {
             if (ModelState.IsValid)
             {
-                var appUsuario = new UsuarioAplicacao();
+                var appUsuario = new RecursoAplicacao();
                 appUsuario.Salvar(usuario);
                 return RedirectToAction("Index");
             }
@@ -67,7 +67,7 @@ namespace Forsoft2_tentativa6.Controllers
 
         public ActionResult Excluir(int id)
         {
-            var appUsuario = new UsuarioAplicacao();
+            var appUsuario = new RecursoAplicacao();
             var usuario = appUsuario.ListarPorID(id);
 
             if (usuario == null) return HttpNotFound();
@@ -79,7 +79,7 @@ namespace Forsoft2_tentativa6.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExcluirConfirmado(int id)
         {
-            var appUsuario = new UsuarioAplicacao();
+            var appUsuario = new RecursoAplicacao();
             appUsuario.Excluir(id);
             return RedirectToAction("Index");
         }

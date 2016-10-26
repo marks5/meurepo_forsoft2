@@ -54,6 +54,11 @@ namespace Forsoft2.Aplicacao
             strQuery += " UPDATE PESSOA SET";
             strQuery += string.Format(" nome = '{0}',", usuario.Nome);
             strQuery += string.Format(" email = '{0}',", usuario.Email);
+            strQuery += string.Format(" login = '{0}',", usuario.Login);
+            strQuery += string.Format(" pais = '{0}',", usuario.Pais);
+            strQuery += string.Format(" qualificacao = '{0}',", usuario.Qualificacao);
+            strQuery += string.Format(" atribuicao = '{0}',", usuario.Atribuicao);
+            strQuery += string.Format(" equipe = '{0}',", usuario.Equipe.idEquipe);
             //strQuery += string.Format(" permissao = '{0}' ", usuario.Permissao);
             strQuery += string.Format(" WHERE id = '{0}'", usuario.idUsuario);
 
@@ -112,11 +117,17 @@ namespace Forsoft2.Aplicacao
                     Nome = reader["nome"].ToString(),
                     Email = reader["email"].ToString(),
                     //Permissao = Convert.ToInt32(reader["permissao"].ToString()),
+                    Atribuicao = Convert.ToChar(reader["atribuicao"].ToString()),
+                    //Login = reader["login"].ToString(),
+                    Pais = reader["pais"].ToString(),
+                    Qualificacao = reader["qualificacao"].ToString(),
+
                     //Eventos = ListarTodosEventosPorUsuario(int.Parse(reader["idUsuario"].ToString()))
                     Equipe = new Equipe()
                     {
-                        Nome = reader["nome"].ToString()
+                        Nome = reader["equipe"].ToString()
                     }
+                    
                 };
                 usuarios.Add(temObjeto);
             }
