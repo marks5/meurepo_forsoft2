@@ -7,6 +7,7 @@ namespace Forsoft2.Dominio
 {
     public class Usuario
     {
+        public int idPessoa { get; set; }
         public int idUsuario { get; set; }
         public string Login { get; set; }
         public int Permissao { get; set; }
@@ -17,6 +18,10 @@ namespace Forsoft2.Dominio
         public string Qualificacao { get; set; }
         public char Atribuicao { get; set; }
 
+        public Usuario()
+        {
+            Equipe = new Equipe();
+        }
         
     }
 }

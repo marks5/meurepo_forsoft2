@@ -14,8 +14,17 @@
 <body>
     <section ng-controller="EventosController">
         <table>
+            <tr>
+                <th ng-repeat="dado in dados">
+                    {{()dado.nome}}
+                </th>
+                <th>
+                    {{dado.data}}
+                </th>
+            </tr>
+
             <tr ng-repeat="item in dados">
-                <th ng-repeat="(Key,value) in item">{{value}}</th>
+                <td ng-repeat="(Key,value) in item">{{value}}</td>
             </tr>
         </table>
     </section>

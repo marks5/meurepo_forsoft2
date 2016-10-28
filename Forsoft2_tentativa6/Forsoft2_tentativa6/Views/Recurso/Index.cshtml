@@ -46,6 +46,14 @@
         }
     }
 
+    function disponibilidade(a) {
+        if (a) {
+            return "Disponível";
+        } else {
+            return "Indisponível";
+        }
+    }
+
     function editarModal(idRecurso) {
         console.log(idRecurso);
         if (idRecurso) {
@@ -56,7 +64,7 @@
                 success(function (data) {
                     $("input[name='idRecurso']").val(data.idRecurso);
                     $("input[name='Nome']").val(data.Nome);
-                    $("input[name='Disponibilidade']").val(data.Disponibilidade);
+                    $("input[name='Disponibilidade']").val(disponibilidade(data.Disponibilidade));
                     $("input[name='Descricao']").val(data.Descricao);
                 });
         }
@@ -165,7 +173,7 @@
                                 <input name="Nome" type="text" placeholder="Nome" class="login-field" id="input-usuario" />
                             </div>
                             <div class="form-divs">
-                                <label for="input-usuario">Disponibildade:</label>
+                                <label for="input-usuario">Disponibilidade:</label>
                                 <input name="Disponibilidade" type="checkbox" placeholder="Disponibilidade" class="login-field" id="input-usuario" />
                             </div>
                         </div>

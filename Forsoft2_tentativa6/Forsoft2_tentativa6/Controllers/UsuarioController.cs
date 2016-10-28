@@ -18,8 +18,13 @@ namespace Forsoft2_tentativa6.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Usuario usuario)
+        public ActionResult Index(Usuario usuario, FormCollection collection)
         {
+            usuario.Equipe = new Equipe()
+            {
+                idEquipe = Convert.ToInt32(Request.Form["equipe"])
+            };
+
             var CatchUsuario = new UsuarioAplicacao();
             CatchUsuario.Salvar(usuario);
             return RedirectToAction("Index");

@@ -34,7 +34,7 @@ namespace Forsoft2.Aplicacao
             strQuery2 += string.Format(" VALUES ('{0}','{1}', {2},'{3}','{4}','{5}',{6})",
                 usuario.Nome,
                 usuario.Email,
-                a,
+                usuario.Equipe.idEquipe,
                 usuario.Pais,
                 usuario.Qualificacao,
                 usuario.Atribuicao,
@@ -51,7 +51,8 @@ namespace Forsoft2.Aplicacao
         private void Alterar(Usuario usuario)
         {
             var strQuery = "";
-            strQuery += " UPDATE PESSOA SET";
+            strQuery += " update pessoa inner join usuario on pessoa.idusuario = usuario.id ";
+                strQuery += "SET";
             strQuery += string.Format(" nome = '{0}',", usuario.Nome);
             strQuery += string.Format(" email = '{0}',", usuario.Email);
             strQuery += string.Format(" login = '{0}',", usuario.Login);
@@ -59,8 +60,8 @@ namespace Forsoft2.Aplicacao
             strQuery += string.Format(" qualificacao = '{0}',", usuario.Qualificacao);
             strQuery += string.Format(" atribuicao = '{0}',", usuario.Atribuicao);
             strQuery += string.Format(" equipe = '{0}',", usuario.Equipe.idEquipe);
-            //strQuery += string.Format(" permissao = '{0}' ", usuario.Permissao);
-            strQuery += string.Format(" WHERE id = '{0}'", usuario.idUsuario);
+            strQuery += string.Format(" permissao = '{0}'", usuario.Permissao);
+            strQuery += string.Format(" WHERE pessoa.id = '{0}'", usuario.idPessoa);
 
             using (contexto = new Contexto())
             {
@@ -70,7 +71,7 @@ namespace Forsoft2.Aplicacao
 
         public void Salvar(Usuario usuario)
         {
-            if (usuario.idUsuario > 0)
+            if (usuario.idPessoa > 0)
                 Alterar(usuario);
              else
                 Inserir(usuario);
@@ -90,7 +91,13 @@ namespace Forsoft2.Aplicacao
         {
             using (contexto = new Contexto())
             {
-                var strQuery = "SELECT * FROM PESSOA";
+                //var strQuery = "select usuario.login, " + 
+                //    "usuario.permissao, pessoa.* ,"
+                //    +"equipe.nome as 'equipenome', equipe.id as 'equipeid'"
+                //    +"from pessoa,equipe inner join usuario "
+                //    +"where pessoa.idusuario = usuario.id "
+                //    +"group by pessoa.id";
+                var strQuery = "select usuario.login, usuario.permissao, pessoa.* , equipe.nome as 'equipenome', equipe.id as 'equipeid' from pessoa inner join usuario on usuario.id = pessoa.idusuario inner join equipe on equipe.id = pessoa.equipe group by pessoa.id";
                 var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
                 return TransformaReaderEmListadeObjeto(retornoDataReader);
             }
@@ -100,7 +107,7 @@ namespace Forsoft2.Aplicacao
         {
             using (contexto = new Contexto())
             {
-                var strQuery = string.Format("SELECT * FROM PESSOA WHERE id = {0}",id);
+                var strQuery = string.Format("select usuario.login, usuario.permissao, pessoa.* , equipe.nome as 'equipenome', equipe.id as 'equipeid' from pessoa inner join usuario on usuario.id = pessoa.idusuario inner join equipe on equipe.id = pessoa.equipe where pessoa.id = {0} group by pessoa.id", id);
                 var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
                 return TransformaReaderEmListadeObjeto(retornoDataReader).FirstOrDefault();
             }
@@ -113,19 +120,21 @@ namespace Forsoft2.Aplicacao
             {
                 var temObjeto = new Usuario()
                 {
-                    idUsuario = int.Parse(reader["id"].ToString()),
+                    idPessoa = int.Parse(reader["id"].ToString()),
+                    //idUsuario = int.Parse(reader["idusuario"].ToString()),
                     Nome = reader["nome"].ToString(),
                     Email = reader["email"].ToString(),
-                    //Permissao = Convert.ToInt32(reader["permissao"].ToString()),
+                    Permissao = Convert.ToInt32(reader["permissao"].ToString()),
                     Atribuicao = Convert.ToChar(reader["atribuicao"].ToString()),
-                    //Login = reader["login"].ToString(),
+                    Login = reader["login"].ToString(),
                     Pais = reader["pais"].ToString(),
                     Qualificacao = reader["qualificacao"].ToString(),
 
                     //Eventos = ListarTodosEventosPorUsuario(int.Parse(reader["idUsuario"].ToString()))
                     Equipe = new Equipe()
                     {
-                        Nome = reader["equipe"].ToString()
+                        Nome = reader["equipenome"].ToString(),
+                        idEquipe = Convert.ToInt32(reader["equipeid"].ToString())
                     }
                     
                 };

@@ -23,10 +23,10 @@ namespace ASPNET.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult recebeDoPHP(string usuario, string senha)
+        public ActionResult recebeDoPHP(string idUsuario)
         {
             
-            if (usuario != null)
+            if (idUsuario != null)
             {
                 ViewBag.Erro = "Usuário ou senha inválidos";
                 return View("Index");
@@ -36,12 +36,20 @@ namespace ASPNET.MVC.Controllers
                 //Antes desse código tem que ver as permissões no banco
                 HttpCookie passou = new HttpCookie("biscoito");
                 passou.Domain = "stevent.com";
-                Md5 md5 = new Md5();
-                passou.Values.Add("usuario", "usuario");
-                passou.Values.Add("senha", md5.CriptografiaMD5(senha));
-                return Redirect("paginaJava.do.Controller");
+                passou.Values.Add("idUsuario", idUsuario);
+                //passou.Values.Add("senha", );
+                return Redirect("http://www2.stevent.com.br:8080");
             }
             
+        }
+
+        [HttpPost]
+        public ActionResult enviaJava(string usuario,string senha)
+        {
+            HttpCookie passa = new HttpCookie("net");
+            passa.Domain = "stevent.com";
+            passa.Values.Add("usuarioChave", usuario);
+            return Redirect("http://192.168.1.2:8080/Stevent");
         }
 
     }
