@@ -18,23 +18,26 @@ namespace Forsoft2_tentativa6.Controllers
         {
             return RedirectToAction("Index", "Usuario");
         }
-
-        public ActionResult Atletas()
+        public ActionResult Home()
         {
-            return Redirect("http://www.stevent.com:8080/listarAtletas");
+            return RedirectToAction("Eventos");
+        }
+        public ActionResult Modalidades()
+        {
+            return Redirect("http://www2.stevent.com:8080/listarModalidades");
         }
 
         public ActionResult Equipes()
         {
-            return Redirect("http://www.stevent.com:8080/listarEquipes");
+            return Redirect("http://www2.stevent.com:8080/listarEquipes");
         }
         public ActionResult Eventos()
         {
-            return Redirect("http://www.stevent.com:8080/listarEventos");
+            return Redirect("http://www2.stevent.com:8080/listarEventos");
         }
         public ActionResult Locais()
         {
-            return Redirect("http://www.stevent.com:8080/listarLocais");
+            return Redirect("http://www2.stevent.com:8080/listarLocais");
         }
     }
 }

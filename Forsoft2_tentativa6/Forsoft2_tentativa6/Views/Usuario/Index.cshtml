@@ -127,7 +127,7 @@
                         <th>@Html.DisplayNameFor(model => model.Pais)</th>
                         <th>@Html.DisplayNameFor(model => model.Qualificacao)</th>
                         <th>@Html.DisplayNameFor(model => model.Atribuicao)</th>
-                        <th>Editar</th>
+                        
                         
                     </tr>
                     @foreach (var item in Model)
@@ -162,9 +162,9 @@
                             </td>
                             <td>
                                 @*Possa funcionar--> <a onclick="abrirModal('editar');" id="@item.idUsuario">NAO CLIQUE</a> |
-                                -->*@ @Html.ActionLink("Editar", "", "", new { @class="fa fa-pencil-square-o" , name = "editar", id = item.idPessoa }) |
+                                -->*@ @Html.ActionLink(" ", "", null, new { @class="fa fa-pencil-square-o" , name = "editar", id = item.idPessoa, hidefocus = "hidefocus" })
                                 @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                                @Html.ActionLink("Delete", "","", new { name = "excluir", id=item.idPessoa })
+                                @Html.ActionLink(" ", "",null, new { @class = "fa fa-trash-o", name = "excluir", id=item.idPessoa, hidefocus = "hidefocus" })
                             </td>
                         </tr>
                     }
