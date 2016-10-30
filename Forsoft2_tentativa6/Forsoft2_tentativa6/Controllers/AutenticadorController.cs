@@ -20,10 +20,10 @@ namespace ASPNET.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult recebeDoPHP(string idUsuario)
+        public ActionResult recebeDoPHP(string loginUsuario)
         {
             
-            if (idUsuario != null)
+            if (loginUsuario != null)
             {
                 ViewBag.Erro = "Usuário ou senha inválidos";
                 return View("Index");
@@ -31,9 +31,9 @@ namespace ASPNET.MVC.Controllers
             {
                 //Falta persistir aqui
                 //Antes desse código tem que ver as permissões no banco
-                HttpCookie passou = new HttpCookie("biscoito");
+                HttpCookie passou = new HttpCookie("net");
                 passou.Domain = "stevent.com.br";
-                passou.Values.Add("idUsuario", idUsuario);
+                passou.Values.Add("idUsuario", loginUsuario);
                 //passou.Values.Add("senha", );
                 return Redirect("http://www2.stevent.com.br:8080/listarEventos");
             }
