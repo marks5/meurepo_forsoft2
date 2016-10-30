@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace ASPNET.MVC
+namespace Forsoft2.MVC
 {
     public class FilterConfig
     {

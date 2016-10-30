@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <title>Cadastro Recursos</title>
+</head>
+<body>
+    <nav id="nave">
+        <ul>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Listas</a>
+                <div class="dropdown-content">
+                    @*<a href="#">Atletas</a>
+            <a href="#">Equipe</a>
+            <a href="#">Evento</a>
+            <a href="#">Local</a>
+            <a href="#">Recurso</a>*@
+                    @Html.ActionLink("Atletas", "Atletas", "Lista")
+
+                    @Html.ActionLink("Equipes", "Equipes", "Lista")
+
+                    @Html.ActionLink("Eventos", "Eventos", "Lista")
+
+                    @Html.ActionLink("Locais", "Locais", "Lista")
+
+                    @Html.ActionLink("Recursos", "Recursos", "Lista")
+                </div>
+            </li>
+            <li><a href="#news">Perfil</a></li>
+            <li><a class="active" href="#home">Home</a></li>
+            <li id="logo-nav"> <img src="http://i.imgur.com/vqRrYH2.png"></img> </li>
+        </ul>
+    </nav>
+    <span id="login-box" name="formulario" onsubmit="return validaInfo()">
+        <div id="goibada" class="login-box-interno">
+            <div id="login-box-label">
+                <h1> Recursos </h1>
+            </div>
+            <div class="login-form">
+                <fieldset>
+                    <legend>Dados do endereço:</legend>
+                    <div class="control-group">
+                        @RenderBody()
+                        <div>
+                            <label for="input-usuario">Local:</label>
+                            <input name="Local" type="text" placeholder="Local" class="login-field" id="input-usuario" />
+                        </div>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn_login">Cadastrar</button>
+            </div>
+        </div>
+    </span>
+</body>
+</html>

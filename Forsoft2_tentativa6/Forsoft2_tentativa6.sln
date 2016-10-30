@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forsoft2.Repositório", "Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forsoft2.Aplicacao", "Forsoft2.Aplicacao\Forsoft2.Aplicacao.csproj", "{CA8B2930-4036-47B1-91DF-811313B1C62F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forsoft2.API_REST", "Forsoft2.API_REST\Forsoft2.API_REST.csproj", "{74E1C9CB-4486-41E3-92E0-7DDBCB6704FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CA8B2930-4036-47B1-91DF-811313B1C62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA8B2930-4036-47B1-91DF-811313B1C62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA8B2930-4036-47B1-91DF-811313B1C62F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74E1C9CB-4486-41E3-92E0-7DDBCB6704FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74E1C9CB-4486-41E3-92E0-7DDBCB6704FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74E1C9CB-4486-41E3-92E0-7DDBCB6704FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74E1C9CB-4486-41E3-92E0-7DDBCB6704FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

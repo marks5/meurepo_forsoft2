@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace Forsoft2.Aplicacao
 {
-    class RecursoAplicacao
+    public class RecursoAplicacao
     {
         private Contexto contexto;
 
@@ -17,7 +17,7 @@ namespace Forsoft2.Aplicacao
         {
             var strQuery = "";
             strQuery += " INSERT INTO RECURSO (nome, disponibilidade, descricao) ";
-            strQuery += string.Format(" VALUES ('{0}','{1}','{2}')", 
+            strQuery += string.Format(" VALUES ('{0}',{1},'{2}')", 
                 recurso.Nome, 
                 recurso.Disponibilidade, 
                 recurso.Descricao);
@@ -29,19 +29,45 @@ namespace Forsoft2.Aplicacao
 
         }
 
-        private void Alterar(Recurso recurso)
+        public List<Recurso> ListarPorIDEV(string idEvento)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Inserir(int idEvento, Recurso recurso)
         {
             var strQuery = "";
-            strQuery += " UPDATE RECURSO SET";
-            strQuery += string.Format(" nome = '{0}',", recurso.Nome);
-            strQuery += string.Format(" disponibilidade = '{0}',", recurso.Disponibilidade);
-            strQuery += string.Format(" descricao = '{0}' ", recurso.Descricao);
-            strQuery += string.Format(" WHERE idRecurso = '{0}'", recurso.idRecurso);
+            strQuery += "";
 
             using (contexto = new Contexto())
             {
                 contexto.ExecutaComando(strQuery);
             }
+        }
+
+        public Recurso ListarPorIDEV(int idEvento)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Alterar(Recurso recurso)
+        {
+            var strQuery = "";
+            strQuery += " UPDATE RECURSO SET";
+            strQuery += string.Format(" nome = '{0}',", recurso.Nome);
+            strQuery += string.Format(" disponibilidade = {0},", recurso.Disponibilidade);
+            strQuery += string.Format(" descricao = '{0}' ", recurso.Descricao);
+            strQuery += string.Format(" WHERE id = '{0}'", recurso.idRecurso);
+
+            using (contexto = new Contexto())
+            {
+                contexto.ExecutaComando(strQuery);
+            }
+        }
+
+        public void Excluir(int idEvento, int id)
+        {
+            throw new NotImplementedException();
         }
 
         public void Salvar(Recurso recurso)
@@ -57,9 +83,19 @@ namespace Forsoft2.Aplicacao
         {
             using (contexto = new Contexto())
             {
-                var strQuery = string.Format(" DELETE FROM RECURSO WHERE idRecurso = {0}", 
+                var strQuery = string.Format(" DELETE FROM RECURSO WHERE id = {0}", 
                     id);
                 contexto.ExecutaComando(strQuery);
+            }
+        }
+
+        public Recurso ListarPorID(int id)
+        {
+            using (contexto = new Contexto())
+            {
+                var strQuery = string.Format("SELECT * FROM RECURSO WHERE id = {0}", id);
+                var retornoDataReader = contexto.ExecutaComandoComRetorno(strQuery);
+                return TransformaReaderEmListadeObjeto(retornoDataReader).FirstOrDefault();
             }
         }
 
@@ -80,9 +116,9 @@ namespace Forsoft2.Aplicacao
             {
                 var temObjeto = new Recurso()
                 {
-                    idRecurso = int.Parse(reader["idRecurso"].ToString()),
+                    idRecurso = int.Parse(reader["id"].ToString()),
                     Nome = reader["nome"].ToString(),
-                    Disponibilidade = Convert.ToInt32(reader["disponibilidade"].ToString()),
+                    Disponibilidade = Convert.ToBoolean((reader["disponibilidade"].ToString())),
                     Descricao = reader["descricao"].ToString()
                 };
                 recursos.Add(temObjeto);

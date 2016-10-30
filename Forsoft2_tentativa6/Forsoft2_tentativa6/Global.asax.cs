@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using Forsoft2.MVC;
+using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Forsoft2_tentativa6
@@ -8,8 +10,9 @@ namespace Forsoft2_tentativa6
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
 
         }
     }

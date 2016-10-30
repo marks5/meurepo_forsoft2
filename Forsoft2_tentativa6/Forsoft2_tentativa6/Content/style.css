@@ -7,26 +7,164 @@
     box-sizing: border-box;
 }
 
+a, u {
+    text-decoration: none !important;
+}
+
 html {
-    background-image: url('../Imagens/pexels-photo-104675.jpeg');
+    /*background: #92BFCA;*/
     background-size: cover;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 14px;
 }
+
+/*NAVBAR*/
+
+/* Hexadecimal das cores da logo:
+azul: #1e74a6
+amarelo: #e6af2f */
+
+#nave{
+  font-size: 16px;
+  background-color: #1e74a6;
+  height: 42px;
+  margin-bottom: 0.5%;
+  box-shadow: 0px 2px 4px #888888;
+}
+
+#logo-nav {
+  color: white;
+  float: left;
+  height: 100%;
+}
+
+#logo-nav > img {
+  width: 160px;
+  left: 745px;
+}
+
+#texto-nav {
+    width: auto;
+    height: 60px;
+    background-color: aqua;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding-right: 10%;
+    overflow: hidden;
+    line-height: 38px;
+}
+
+li {
+    float: right;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 2px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #e6af2f;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 4px #888888;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 0px 11px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+h1 {
+    text-align: center
+
+}
+
+h2 {
+    text-align: center
+}
+
+p {
+    padding: 8px;
+    font-size: 26px;
+}
+
+textarea {
+  border:2px solid #f2f5f7;
+	height: 60px;
+	width: 300px;
+}
+/*FIM NAVBAR*/
 
 #login {
   margin: -10px;
   box-shadow: 3px;
 	max-width: 40%;
-	border-radius: 5px;
   position: absolute;
 }
 
 #login-box {
 	box-shadow: 3px;
 	width: 80%;
-	margin: 0 auto;
-	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	height:80%;
+}
+
+#pao {
+    background-color: rgba(51,51,51,.4);
+    float: left;
+    max-width: 60%;
+    position: relative;
+    text-align: justify;
+    font-size: 18px;
+    color: white;
+    padding: 3% 0 3% 0;
+    margin: 10px;
+}
+
+.login-box-interno {
+	width: 23%;
+	background-color: white;
+	margin-top: 10px;
+	padding: 2%;
+  margin: 1% auto;
+  box-shadow: 0px 1px 4px #888888;
+}
+
+.login-box-label {
+	text-align: center;
+	font-size: 18px;
+	color: black;
+}
+
+.login-form {
+    text-align: center;
+    color: black;
 }
 
 /* Página de Informações de Evento */
@@ -41,16 +179,14 @@ html {
 	box-shadow: 3px;
 	width: 100%;
 	margin: 0 auto;
-	border-radius: 5px;
 	clear: both;
 	margin-top: 1.3%;
 }
 
 .evento-box-label {
 	text-align: center;
-	font: 20px/45px sans-serif;
-	color: white;
-	text-shadow: 1px 0px 1px white;
+	font-size: 20px/45px;
+	color: black;
 }
 
 .evento-box-interno {
@@ -59,7 +195,6 @@ html {
 	min-height: 10%;
 	background-color: rgba(51,51,51,.4);
 	margin-top: 10px;
-	border-radius: 8px;
 	overflow: hidden;
 	padding: 2%;
 }
@@ -69,39 +204,17 @@ html {
 	font-size: 16px;
 }
 
-.botao {
-	
-}
 /* Fim de página de Informações de Evento */
-
-.login-box-interno {
-	width: 80%;
-	min-height: 10%;
-	background-color: rgba(51,51,51,.4);
-	margin-top: 10px;
-	border-radius: 8px;
-	overflow: scroll;
-	padding: 2%;
-	float: left;
-}
-
-#login-box-label {
-	text-align: center;
-	font: 20px/45px sans-serif;
-	color: white;
-	text-shadow: 1px 0px 1px white;
-}
 
 .input-div input {
   margin: 20px;
   background-color: #f2f5f7;
-	border-radius: 15px;
   display: inline-block;
   margin-bottom: 8px;
 	width: 250px;
 	height: 40px;
 	padding-left: 5px;
-	font: normal 13px sans-serif;
+	font-size: 13px;
 	border: 3px solid white;
 	outline: none;
 }
@@ -115,23 +228,25 @@ html {
 }
 
 .btn_login {
-  font:bold 20px Tahoma, Geneva, sans-serif;
-  font-style:normal;
-  color:#ffffff;
-  background:#2274A5;
-  border:0px solid #ffffff;
-  text-shadow:0px -1px 1px #222222;
-  box-shadow:2px 2px 5px #000000;
-  -moz-box-shadow:2px 2px 5px #000000;
-  -webkit-box-shadow:2px 2px 5px #000000;
-  border-radius:10px 10px 10px 10px;
-  -moz-border-radius:10px 10px 10px 10px;
-  -webkit-border-radius:10px 10px 10px 10px;
-  padding: 8px 45px;
-  cursor:pointer;
-  margin:0 auto;
-  width: 250px;
-  margin-top: 0.5%;
+    border: 3px solid black;
+    color: #fff;;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 15px 50px;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    position: relative;
 }
 
 .btn_login:active{
@@ -142,13 +257,13 @@ html {
 
 .btn_login:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99), color-stop(1, #599bb3));
-	background:-moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:-webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:-o-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:-ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background:-moz-linear-gradient(top, white 5%, whitesmoke 100%);
+	background:-webkit-linear-gradient(top, white 5%, whitesmoke 100%);
+	background:-o-linear-gradient(top, white 5%, whitesmoke 100%);
+	background:-ms-linear-gradient(top, white 5%, whitesmoke 100%);
+	background:linear-gradient(to bottom, white 5%, whitesmoke 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3',GradientType=0);
-	background-color:#408c99;
+	background-color:white;
 }
 
 #btn-box {
@@ -158,30 +273,15 @@ html {
 
 #msg_erro {
     font-size-adjust: auto;
-    font-style: italic;
-    font-weight: 900;
-    color: white;
+    font-weight: 600;
+    color: black;
     visibility: hidden;
     margin-top: 7px;
     margin-bottom: 7px;
 }
 
-.login-form {
-    text-align: center;
-    color: white;
-    font-size: 22px;
-    margin-top: 5%;
-}
-
 #recover {
-    color: white;
-}
-
-@media screen and (max-width: 400px) {
-    #login-box-label {
-      height: 40px;
-      font: 12px/30px sans-serif;
-    }
+    color: black;
 }
 
 #div-geral {
@@ -189,34 +289,22 @@ html {
 	padding: 4%;
 }
 
-#pao {
-    background-color: rgba(51,51,51,.4);
-    float: right;
-    max-width: 60%;
-    position: relative;
-    border-radius: 10px;
-    text-align: center;
-    font: 20px/45px sans-serif;
-    color: white;
-    text-shadow: 1px 0px 1px white;
-    padding: 3% 0 3% 0;
-}
-
 #goibada {
     height: 100%;
     width: 100%;
+    padding: 10px;
+    margin-left: 10px;
 }
 
 .control-group input {
   margin: 20px;
 	background-color: #f2f5f7;
-	border-radius: 15px;
   display: inline-block;
   margin-bottom: 8px;
-	width: 250px;
+	width: 150px;
 	height: 40px;
 	padding-left: 5px;
-	font: normal 13px sans-serif;
+	font-size: 13px;
 	border: 3px solid white;
 	outline: none;
 }
@@ -224,23 +312,22 @@ html {
 .control-group select {
   margin: 20px;
 	background-color: #f2f5f7;
-	border-radius: 15px;
   display: inline-block;
   margin-bottom: 8px;
-	width: 250px;
+	width: 200px;
 	height: 40px;
 	padding-left: 5px;
-	font: normal 13px sans-serif;
+	font-size: 13px;
 	border: 3px solid white;
 	outline: none;
 }
 
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 90%;
     background-color: white;
     margin:auto;
+    height: auto;
 }
 
 td, th {
@@ -266,8 +353,8 @@ tr:nth-child(even) {
   background-size: 100%;
   height: 100px;
   width: 100px;
-  margin: 3% auto;
-} 
+  margin: auto;
+}
 
 .info {
   color: white;
@@ -280,92 +367,219 @@ tr:nth-child(even) {
   color: lightblue;
 }
 
-.info > div {
-  margin-top: 3%;
-}
 
 fieldset {
   text-align: center;
 }
 
-/*NAVBAR*/
-
-#nave{
-    width: 100%;
-    font-size: 23px;
-    color: black;
-    font-weight: 900;
-    height: 60px;
-	margin-bottom: 0.5%;
+#esquerdada {
+  display: block;
+  margin: 10px auto;
 }
 
-#logo-nav {
-    color: white;
-    float: left;
+/* Modal */
+a {
+  color: currentColor;
+}
+
+.modal-cadastro {
+	/* top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+  margin: 0 auto;
+  z-index: 99998; */
+  background: none;
+  position: absolute;
+  height: auto;
+  width: 43%;
+visibility: hidden;
+  top: 20%;
+  left: 30%;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	z-index: 200;
+}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 22px;
+	position: absolute;
+	right: 61px;
+	text-align: center;
+	top: -3px;
+	width: 22px;
+	text-decoration: none;
+	font-weight: bold;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 0px 1px 3px #000;
+  z-index: 1;
+}
+
+.close:hover { background: #00d9ff; }
+
+.form-divs {
+display: inline-block;
+}
+
+/*Atributos dos paineis dashboard interno(pós evento selecionado)*/
+
+.lpanel{
+    width:80%;
+    height:30%;
+    margin:5% 1% 0% 8%;   
+    float:left;
+    box-shadow:0px 2px 4px #888888;
+}
+
+
+.rpanel{
+    width:85%;
+    height:69%;
+    margin:7% 5% 0% 2%;   
+    float:left;
+    box-shadow:0px 2px 4px #888888;
+}
+
+.rpanel h2, .lpanel h2{
+    
+    text-align:left;
+    margin: 1.26% 0% 0% 1%;
+}
+
+
+.rpanel table, .lpanel table{
+    
+    margin:1.80% 1.2% 2% 0.50%;
+    width:99%;
+}
+/*Inicio dos atributos do dashboard inicial (pré evento) */
+
+.content-event{
+    
+    box-shadow: 0px 2px 4px #888888;
+    margin:5% 8% 0% 12%;
+    width:74.50%;
+    height:20%;
+    
+}
+
+.content-event h2{
+    
+    text-align:left;
+    margin:5% 0% 2% 3%;
+    
+}
+.vacancy{
+    
+    width:20%;
+    height:10%;
+    margin:5% 0% 0% 40%;
+    box-shadow: 0px 2px 4px #888888;
+}
+.vacancy button{
+    
+    width: 100%;
     height: 100%;
 }
-
-#logo-nav > img {
-  width: 150px;
-/*  margin: 7px;*/
-}
-
-#texto-nav {
-    width: auto;
-    height: 60px;
-    background-color: aqua;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding-right: 10%;
+.buttondiv{
+    
+    float:left;
+    margin:2% 0% 0% 8%;
+    padding: 1%;
+    background-color:transparent;
     overflow: hidden;
-    background-color: #333;
-    line-height: 40px;
+    border: 2px solid black;
+    border-radius:80%;
+    
 }
-
-li {
-    float: right;
-}
-
-li a, .dropbtn {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: #2274A5;
-}
-
-li.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+#buttontext{   
     text-align: left;
+    width:5%;   
+    padding: 6% 0% 0% 30%;
+    white-space: nowrap;
+}
+.lillefter{
+    float:left;
+    width:60%;
+    height:80%;
+}
+.lilrighter{
+    float:right;
+    width:40%;
+    height:80%;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+/*Fim dos atributos do dashboard main*/
 
-.dropdown:hover .dropdown-content {
-    display: block;
+/*Nice Scroll-BAr */
+
+#box2000 > div
+{
+    -webkit-transition: width 0.2s ease; 
+    -moz-transition: width 0.2s ease; 
+    -o-transition: width 0.2s ease; 
+    -ms-transition: width 0.2s ease;     
+    transition: width 0.2s ease; 
+}
+#box2000 > div:hover
+{
+    width:120%!important;
+    cursor:pointer;
 }
 
-/*FIM NAVBAR*/
+
+/*RESPONSIVIDADE*/
+@media screen and (max-width: 600px) {
+    .login-box-label {
+      height: 40px;
+      font-size: 12px/30px;
+    }
+	
+    .login-box-interno {
+	  margin-top: 5%;
+      width: 80%;
+      height: 50%;
+      font-size: 18px;
+    }
+
+    .input-div input {
+      width: 75%;
+      height: 10%;
+    }
+
+    li a, .dropbtn {
+      padding: 2px 15px;
+      font-size: 18px;
+    }
+    .lpanel{
+      width:90%;
+      height:40%;
+    
+    }
+    .rpanel{
+      width:90%;
+      height:40%;
+    
+    }
+    .content-event{
+      width:90%;
+      height:40%;
+    }
+    .vacancy{
+      width:90%;
+      height:5%;
+      
+    }
+    .lillefter{
+      width:90%;
+      height:40%
+    }
+    .lilrighter{
+      width:90%;
+      height:40%
+    }
+}

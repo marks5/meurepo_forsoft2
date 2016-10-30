@@ -37,7 +37,6 @@ namespace ConsoleApplication1
                         var usuario1 = new Usuario
                         {
                             Email = email,
-                            Senha = senha,
                             Permissao = Convert.ToInt32(permissao)
                         };
 
@@ -57,7 +56,7 @@ namespace ConsoleApplication1
 
             foreach (var usuario in dados)
             {
-                Console.WriteLine("IdUsuario: {0}, Email: {1}, Senha: {2}, Permissao: {3}", usuario.idUsuario, usuario.Email, usuario.Senha, usuario.Permissao);
+                Console.WriteLine("IdUsuario: {0}, Email: {1}, Permissao: {2}", usuario.idUsuario, usuario.Email, usuario.Permissao);
             }
                 
 

@@ -1,0 +1,59 @@
+﻿
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <title>Recursos</title>
+</head>
+<body onload="setarVisibilidade();">
+    <nav id="nave">
+        <ul>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Listas</a>
+                <div class="dropdown-content">
+                    <a href="#">@Html.ActionLink("Atletas", "Atletas", "Lista")</a>
+                    <a href="#">@Html.ActionLink("Equipe", "Equipes", "Lista")</a>
+                    <a href="#">@Html.ActionLink("Evento", "Eventos", "Lista")</a>
+                    <a href="#">@Html.ActionLink("Local", "Locais", "Lista")</a>
+                    <a href="#">@Html.ActionLink("Recurso", "Recursos", "Lista")</a>
+                </div>
+            </li>
+            <li><a href="#news">Perfil</a></li>
+            <li><a class="active" href="#home">Home</a></li>
+            <li id="logo-nav"> <img src="http://i.imgur.com/vqRrYH2.png"></img> </li>
+        </ul>
+    </nav>
+        <div id="goibada" class="login-box-interno">
+            <div id="login-box-label">
+                <h1> Recursos </h1>
+            </div>
+            <div class="login-form">
+                <div style="height: 80%; width: 100%; overflow: auto;">
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Disponibilidade</th>
+                            <th>Descrição</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <button type="button" class="btn_login" onclick="abrirModal();">Cadastrar Novos Recursos</button>
+            </div>
+        </div>
+    <!-- Estrutura do modal -->
+    <div id="modal" class="modal-cadastro">
+        <a class="close" onclick="abrirModal();">X</a>
+        <form id="login-box" name="formulario" onsubmit="return validaInfo()">
+            @RenderBody();
+        </form>
+    </div>
+    <!-- Fim da estrutura do modal -->
+</body>
+</html>

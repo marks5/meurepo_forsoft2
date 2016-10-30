@@ -2,63 +2,253 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutListaUsuario.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageUsuario.cshtml";
 }
 
-<h2>Index</h2>
+<script>
+    $(function () {
+        $('a[name="editar"]').on("click", function (e, attr) {
+            e.preventDefault();
+            editarModal($(this).attr('id'));
+        })
+    });
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idUsuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Senha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Permissao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Eventos)
-        </th>
-        <th></th>
-    </tr>
+    $(function () {
+        $('a[name="excluir"]').click(function (e, attr) {
+            e.preventDefault();
+            excluirModal($(this).attr('id'));
+        })
+    });
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idUsuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Senha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Permissao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Eventos)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    function excluirModal(idUsuario) {
+        if (idUsuario) {
+            //preciso de alguma caixa em html e css para exclusão
+            var confirmar = confirm("Deseja Realmente Apagar ?");
+            var data = idUsuario;
+            if (confirmar){
+            $.ajax({
+                method: 'POST',
+                url: 'Usuario/Excluir/',
+                data: { id: data },
+                cache: false,
+                success: function () {
+                    //alguma viagem aqui qualquer
+                    location.reload();
+                }
+            })
+            }
+        }
+    }
 
-</table>
+    function editarModal(idUsuario) {
+
+        if (idUsuario) {
+            $.ajax({
+                method: 'GET',
+                url: 'Usuario/GetUsuario?id=' + idUsuario
+            }).
+                success(function (data) {
+                    //"input[name='idUsuario']").val(data.idUsuario);
+                    $("input[name='idPessoa']").val(data.idPessoa);
+                    console.log(data.idPessoa);
+                    $("input[name='Login']").val(data.Login);
+                    $("input[name='Nome']").val(data.Nome);
+                    $("input[name='Email']").val(data.Email);
+                    //permissao e atribuicao faltam "setar" o select
+                    $("select[name='equipe']").val(data.Equipe.idEquipe).change();
+                    $("select[name='Permissao']").val(data.Permissao).change();
+                    $("input[name='Pais']").val(data.Pais);
+                    $("input[name='Qualificacao']").val(data.Qualificacao);
+                    $("input[name='Atribuicao']").val(data.Atribuicao);
+                });
+        }
+
+        //Exibir Modal
+        modal = document.getElementById("modal").style.visibility;
+        if (modal == "hidden") {
+            document.getElementById("modal").style.visibility = "visible";
+        }
+        if (modal == "visible") {
+            document.getElementById("modal").style.visibility = "hidden";
+        }
+    }
+    $(function () {
+        $.ajax({
+            method: 'GET',
+            url: 'api/Equipes'
+        }).success(function (data) {
+            $.each(data, function (i, data) {
+                $("select[name='equipe']").append($('<option>', {
+                    value: data.idEquipe,
+                    text: data.nome
+                }));
+            });
+        });
+    })
+    function abrirModal() {
+        
+        //"input[name='idUsuario']").val("");
+        $("input[name='idPessoa']").val("");
+        $("input[name='Login']").val("");
+        $("input[name='Nome']").val("");
+        $("input[name='Email']").val("");
+        //$("select[name='Permissao']").val("");
+        //falta equipe aqui
+        $("input[name='Pais']").val("");
+        $("input[name='Qualificacao']").val("");
+        //$("input[name='Atribuicao']").val("");
+
+        //Exibir Modal
+        modal = document.getElementById("modal").style.visibility;
+        if (modal == "hidden") {
+            document.getElementById("modal").style.visibility = "visible";
+        }
+        if (modal == "visible") {
+            document.getElementById("modal").style.visibility = "hidden";
+        }
+
+    }
+</script>
+
+    <div id="goibada" class="login-box-interno">
+        <div id="login-box-label">
+            <h1> Pessoas </h1>
+        </div>
+        <div class="login-form">
+            <div style="height: 70%; width: 100%; overflow: scroll;">
+                <table>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.idPessoa)</th>
+                        <th>@Html.DisplayNameFor(model => model.Login)</th>
+                        <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                        <th>@Html.DisplayNameFor(model => model.Email)</th>
+                        <th>@Html.DisplayNameFor(model => model.Permissao)</th>
+                        <th>@Html.DisplayNameFor(model => model.Equipe)</th>
+                        <th>@Html.DisplayNameFor(model => model.Pais)</th>
+                        <th>@Html.DisplayNameFor(model => model.Qualificacao)</th>
+                        <th>@Html.DisplayNameFor(model => model.Atribuicao)</th>
+                        
+                        
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.idPessoa)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Login)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Permissao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Equipe.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Pais)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Qualificacao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Atribuicao)
+                            </td>
+                            <td>
+                                @*Possa funcionar--> <a onclick="abrirModal('editar');" id="@item.idUsuario">NAO CLIQUE</a> |
+                                -->*@ @Html.ActionLink(" ", "", null, new { @class="fa fa-pencil-square-o" , name = "editar", id = item.idPessoa, hidefocus = "hidefocus" })
+                                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                                @Html.ActionLink(" ", "",null, new { @class = "fa fa-trash-o", name = "excluir", id=item.idPessoa, hidefocus = "hidefocus" })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <button type="button" class="btn_login" onclick="abrirModal()">Cadastrar Novas Pessoas</button>
+        </div>
+    </div>
+<!-- Estrutura do modal -->
+<div id="modal" class="modal-cadastro">
+    <a class="close" onclick="abrirModal();">X</a>
+    <form id="login-box" name="formulario" onsubmit="return validaInfo()" method="post">
+        <div id="goibada" class="login-box-interno">
+            <div id="login-box-label">
+                <h1>  </h1>
+            </div>
+            <div class="login-form">
+                <fieldset>
+                    <legend>Dados Pessoais:</legend>
+                    <div class="control-group">
+                        <div>
+                            <input name="idPessoa" type="text" placeholder="id" class="login-field" id="input-usuario" style="display: none;" />
+                            @*<input name="idUsuario" type="text" placeholder="id" class="login-field" id="input-usuario" style="display: none;" />*@
+                            <div class="form-divs">
+                                <label for="input-usuario">Login:</label>
+                                <input name="Login" type="text" placeholder="Login" class="login-field" id="input-usuario" /><br>
+                            </div>
+
+                            <div class="form-divs">
+                                <label for="input-usuario">Permissão:</label>
+                                <select name="Permissao">
+                                    <option value="1">Ler</option>
+                                    <option value="2">Ler, Criar e Editar</option>
+                                    <option value="3">Ler, Criar, Editar e Excluir</option>
+                                </select>
+                            </div>
+
+                            <div class="form-divs">
+                                <label for="input-usuario">Nome:</label>
+                                <input name="Nome" type="text" placeholder="Nome" class="login-field" id="input-usuario" /><br>
+
+                            </div>
+
+                            <div class="form-divs">
+                                <label for="input-usuario">E-mail:</label>
+                                <input name="Email" type="text" placeholder="E-mail" class="login-field" id="input-usuario" />
+                            </div>
+
+                        </div>
+                        <div>
+
+                            <div class="form-divs">
+                                <label for="input-usuario">Equipe:</label>
+                                <select name="equipe">
+                                    
+                                </select>
+                            </div>
+
+                            <div class="form-divs">
+                                <label for="input-usuario">País:</label>
+                                <input name="Pais" type="text" placeholder="País" class="login-field" id="input-usuario" />
+                            </div>
+
+                            <div class="form-divs">
+                                <label for="input-usuario">Qualificação:</label>
+                                <input name="Qualificacao" type="text" placeholder="Qualificação" class="login-field" id="input-usuario" />
+                            </div>
+
+                            <div class="form-divs">
+                                <label for="input-usuario">Atribuição:</label>
+                                <select name="Atribuicao">
+                                    <option value="A">Atleta</option>
+                                    <option value="S">Staff</option>
+                                </select>
+                            </div>
+
+
+                            </div>
+                        </div>
+                </fieldset>
+
+
+                <button type="submit" class="btn_login">Cadastrar</button>
+            </div>
+        </div>
+        </form>
+            </div>

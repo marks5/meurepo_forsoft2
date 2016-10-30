@@ -15,18 +15,15 @@ namespace ASPNET.MVC.Controllers
         [HttpPost]
         public ActionResult enviaAoPHP(string usuario, string senha)
         {
-            //Depende de como o AD reconhece vai estar
-            usuario.ToLower();
-            senha.ToLower();
             //Mudar a action para o php e o método de envio de dados
-            return Content("<form action='http://www.google.com.br' id='frmTest' method='get'><input type='hidden' name='usuario' value='" + usuario + "' /><input type='hidden' name='senha' value='" + senha + "' /></form><script>document.getElementById('frmTest').submit();</script>");
+            return Content("<form action='http://www2.stevent.com.br/valida.php' id='frmTest' method='post'><input type='hidden' name='usuario' value='" + usuario + "' /><input type='hidden' name='senha' value='" + senha + "' /></form><script>document.getElementById('frmTest').submit();</script>");
         }
 
         [HttpPost]
-        public ActionResult recebeDoPHP(string usuario, string senha)
+        public ActionResult recebeDoPHP(string loginUsuario)
         {
             
-            if (usuario != null)
+            if (loginUsuario != null)
             {
                 ViewBag.Erro = "Usuário ou senha inválidos";
                 return View("Index");
@@ -34,14 +31,22 @@ namespace ASPNET.MVC.Controllers
             {
                 //Falta persistir aqui
                 //Antes desse código tem que ver as permissões no banco
-                HttpCookie passou = new HttpCookie("biscoito");
-                passou.Domain = "stevent.com";
-                Md5 md5 = new Md5();
-                passou.Values.Add("usuario", "usuario");
-                passou.Values.Add("senha", md5.CriptografiaMD5(senha));
-                return Redirect("paginaJava.do.Controller");
+                HttpCookie passou = new HttpCookie("net");
+                passou.Domain = "stevent.com.br";
+                passou.Values.Add("idUsuario", loginUsuario);
+                //passou.Values.Add("senha", );
+                return Redirect("http://www2.stevent.com.br:8080/listarEventos");
             }
             
+        }
+
+        [HttpPost]
+        public ActionResult enviaJava(string usuario,string senha)
+        {
+            HttpCookie passa = new HttpCookie("net");
+            passa.Domain = "stevent.com";
+            passa.Values.Add("usuarioChave", usuario);
+            return Redirect("http://192.168.1.2:8080/Stevent");
         }
 
     }

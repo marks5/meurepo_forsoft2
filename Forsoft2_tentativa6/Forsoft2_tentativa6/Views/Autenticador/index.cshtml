@@ -1,7 +1,13 @@
-﻿<html>
+﻿@{ 
+    Layout = null;
+}
+<html>
 <head>
 	<meta charset="UTF-8"/>
-    <script src="~/Scripts/script.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Script/script.js"></script>
     <link href="~/Content/style.css" rel="stylesheet" />
      <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<title>Login</title>
@@ -9,7 +15,7 @@
 </head>
 <body>
     <form id="login-box" name="formulario" onsubmit="return validaInfo()" action="/Autenticador/enviaAoPHP" method="post">
-		<div class="login-box-interno">
+		<div class="login-box-interno" style="width:100%">
 
 			<div id="login-box-label">
 				<h1> Seja Bem-Vindo(a) </h1>
@@ -40,10 +46,7 @@
             </div>
 		</div>
 	 </form>
-     <div id="pao">
-         <h1>STEEVE - Sistema de Eventos Esportivos</h1><br>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet lorem ac mauris vehicula sagittis nec nec sapien. Quisque semper, elit sit amet pharetra ullamcorper, mauris lacus congue ipsum, ac aliquam orci diam vitae urna. Sed ut tincidunt felis. Donec nunc odio, egestas et tristique mattis, iaculis at ligula. Maecenas efficitur nisl vel lacus varius consectetur. Phasellus vel rhoncus arcu, sed venenatis leo. Suspendisse potenti. Sed convallis enim vel mollis dapibus. Praesent venenatis neque libero, in lobortis turpis interdum a. Cras et enim at elit hendrerit fringilla. Nam non ultrices nisi. Donec maximus ultrices lorem, vel pellentesque massa luctus et. Vestibulum eu efficitur tellus, nec feugiat mauris. Duis a erat diam. Proin quis convallis odio, eu consequat sapien. Ut eu turpis porta, ullamcorper nunc ac, malesuada nunc.</p>
-     </div>
+     
 
 </body>
 </html>

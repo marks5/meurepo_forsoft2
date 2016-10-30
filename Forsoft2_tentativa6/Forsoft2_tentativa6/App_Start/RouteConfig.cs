@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Forsoft2_tentativa6
+namespace Forsoft2.MVC
 {
     public class RouteConfig
     {
@@ -14,10 +14,12 @@ namespace Forsoft2_tentativa6
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
+                name: "Padrao",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Usuario", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Autenticador", action = "Index", id = UrlParameter.Optional }
             );
+
+
         }
     }
 }
